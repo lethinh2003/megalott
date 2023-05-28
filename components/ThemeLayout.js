@@ -6,6 +6,7 @@ import BackToTop from "./homePage/BackToTop";
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: ${({ theme }) => theme.palette.background.default};
+    color: ${({ theme }) => theme.palette.text.primary};
   }
   pre {
     ${"" /* max-width: 700px; */}
@@ -96,7 +97,7 @@ const getDesignTokens = (mode) => ({
         ? {
             first: "#25396f",
             primary: "#ffffff",
-            secondary: "#525866",
+            secondary: "#000000",
           }
         : {
             first: "#ffffff",

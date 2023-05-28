@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import dbConnect from "../../../database/dbConnect";
+import NguoiDung from "../../../models/NguoiDung";
 var randomstring = require("randomstring");
 var jwt = require("jsonwebtoken");
 async function refreshAccessToken(tokenObject) {

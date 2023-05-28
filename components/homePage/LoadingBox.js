@@ -1,32 +1,7 @@
-import {
-  Button,
-  Box,
-  FormGroup,
-  FormControlLabel,
-  Switch,
-  IconButton,
-  Typography,
-  FormControl,
-  InputLabel,
-  Avatar,
-  Card,
-  CardActions,
-  CardContent,
-  TextField,
-  CardMedia,
-  Input,
-  Backdrop,
-  CircularProgress,
-  Alert,
-  AlertTitle,
-  Fade,
-  Snackbar,
-} from "@mui/material";
-import { FaFacebookF } from "react-icons/fa";
-import { BsInstagram, BsTwitter } from "react-icons/bs";
+import { Backdrop, Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { Bars } from "react-loading-icons";
 import { BsCheckSquare } from "react-icons/bs";
+import { Bars } from "react-loading-icons";
 const LoadingBox = (props) => {
   const { isSuccess, isLoading } = props;
   const BoxLoading = styled(Box)({
@@ -50,11 +25,21 @@ const LoadingBox = (props) => {
   });
   return (
     <>
-      <Backdrop sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }} open={isLoading}>
+      <Backdrop
+        sx={{
+          color: "#fff",
+          zIndex: (theme) => theme.zIndex.drawer + 2,
+          width: "100%",
+          maxWidth: "540px",
+          left: "50%",
+          transform: "translateX(-50%)",
+        }}
+        open={isLoading}
+      >
         <BoxLoading>
           {!isSuccess && (
             <>
-              <Bars fill="#06bcee" width={50} height={50} speed={0.75} />
+              <Bars fill="red" width={50} height={50} speed={0.75} />
               <LoadingContent>Loading...</LoadingContent>
             </>
           )}

@@ -17,6 +17,7 @@ import SocketProvider from "../context";
 import { store } from "../redux/reducers/store";
 import "../styles/globals.css";
 import "../styles/layout.scss";
+
 const TopProgressBar = dynamic(
   () => {
     return import("../components/TopProgressBar");
@@ -78,6 +79,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
                   }}
                 />
                 <Component {...pageProps} />
+
                 <ToastContainer
                   position="top-center"
                   autoClose={5000}

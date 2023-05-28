@@ -39,7 +39,7 @@ const Footer = () => {
     transform: "translateX(-50%)",
     width: "100%",
     height: "78px",
-    zIndex: 100,
+    zIndex: theme.zIndex.drawer + 1,
     gap: "10px",
     display: "flex",
   }));

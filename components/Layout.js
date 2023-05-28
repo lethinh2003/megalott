@@ -32,8 +32,15 @@ const Layout = (props) => {
           }}
         >
           <Header />
-
-          {props.children}
+          <Box
+            sx={{
+              padding: "10px",
+              position: "relative",
+              zIndex: 1,
+            }}
+          >
+            {props.children}
+          </Box>
           <Footer />
         </Box>
       </Box>
