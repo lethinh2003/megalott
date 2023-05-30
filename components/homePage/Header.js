@@ -1,6 +1,8 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Link from "next/link";
+
+import SoDu from "../user/SoDu";
 const Header = (props) => {
   const { data: session, status } = useSession();
 
@@ -51,6 +53,11 @@ const Header = (props) => {
                 <Link href="/dangky">
                   <Button className="btn-register">Đăng ký</Button>
                 </Link>
+              </>
+            )}
+            {status === "authenticated" && (
+              <>
+                <SoDu />
               </>
             )}
           </Box>

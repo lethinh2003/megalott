@@ -105,6 +105,17 @@ const getDesignTokens = (mode) => ({
             secondary: "#a8b3cf",
           }),
     },
+    color: {
+      ...(mode === "light"
+        ? {
+            primary: "#ff6464",
+            secondary: "#000000",
+          }
+        : {
+            primary: "#ff6464",
+            secondary: "#a8b3cf",
+          }),
+    },
   },
 });
 

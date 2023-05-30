@@ -37,6 +37,7 @@ const Layout = (props) => {
               padding: "10px",
               position: "relative",
               zIndex: 1,
+              paddingBottom: "70px",
             }}
           >
             {props.children}

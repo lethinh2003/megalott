@@ -1,7 +1,6 @@
-import { getSession, useSession } from "next-auth/react";
-import Layout from "../components/Layout";
-import { signOut } from "next-auth/react";
+import { getSession, signOut, useSession } from "next-auth/react";
 import { useEffect } from "react";
+import Layout from "../components/Layout";
 const Logout = () => {
   const { data: session, status } = useSession();
   const handleLogOut = async () => {
@@ -9,7 +8,6 @@ const Logout = () => {
       redirect: true,
       callbackUrl: "/",
     });
-    localStorage.removeItem("listLikeComments");
   };
   useEffect(() => {
     if (session) {

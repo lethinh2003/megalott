@@ -2,8 +2,7 @@ import { Backdrop, Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { BsCheckSquare } from "react-icons/bs";
 import { Bars } from "react-loading-icons";
-const LoadingBox = (props) => {
-  const { isSuccess, isLoading } = props;
+const LoadingBox = ({ isSuccess, isLoading }) => {
   const BoxLoading = styled(Box)({
     borderRadius: "20px",
     backgroundColor: "#fff",
