@@ -103,3 +103,37 @@ pre {
 .MuiOutlinedInput-root {
   border-radius: 1.5rem;
 }
+.title {
+  align-items: center;
+  color: #333;
+  display: flex;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.title:before {
+  background: red;
+  content: "";
+  display: block;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  width: 0.5rem;
+}
+.huongdan ul li {
+  list-style: none;
+  margin-bottom: 0.2rem;
+  padding-left: 0.4rem;
+  position: relative;
+  text-align: left;
+}
+.huongdan ul li:before {
+  background: red;
+  content: "";
+  height: 0.5rem;
+  left: -11px;
+  position: absolute;
+  top: 8px;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  width: 0.5rem;
+}

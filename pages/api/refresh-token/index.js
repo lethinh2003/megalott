@@ -43,7 +43,7 @@ const handle = async (req, res) => {
       // update Refresh Token
       await NguoiDung.findOneAndUpdate(
         {
-          refreshToken,
+          taiKhoan: user.taiKhoan,
         },
         {
           refreshToken: generateRefreshToken,

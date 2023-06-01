@@ -1,4 +1,4 @@
-import { SET_BALANCE, SET_DISPLAY_BALANCE } from "../actions/constants";
+import { SET_BALANCE, SET_DISPLAY_BALANCE, UPDATE_BALANCE } from "../actions/constants";
 const initialState = {
   display: false,
   balance: 0,
@@ -14,6 +14,11 @@ const balanceReducer = (state = initialState, payload) => {
       return {
         ...state,
         balance: payload.data,
+      };
+    case UPDATE_BALANCE:
+      return {
+        ...state,
+        balance: state.balance + payload.data,
       };
     default:
       return state;

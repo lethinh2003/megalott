@@ -41,7 +41,6 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
           <Provider store={store}>
             <SocketProvider>
               <ThemeLayout>
-                <TopProgressBar />
                 <DefaultSeo
                   title="XỔ SỐ MEGALOTT"
                   description="MEGALOTT - Hệ thống chơi xổ số trực tuyến"

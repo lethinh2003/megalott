@@ -17,7 +17,7 @@ const AccountMenu = (props) => {
     "& svg": {
       color: theme.palette.color.primary,
     },
-    "& .title": {
+    "& .title-menu": {
       fontSize: "17px",
     },
   }));
@@ -25,12 +25,12 @@ const AccountMenu = (props) => {
     {
       icon: <LocalAtmOutlinedIcon />,
       title: "Biến động số dư",
-      url: "",
+      url: "/biendongsodu",
     },
     {
       icon: <CreditScoreOutlinedIcon />,
       title: "Lịch sử nạp",
-      url: "",
+      url: "/lichsunaptien",
     },
     {
       icon: <PaymentsOutlinedIcon />,
@@ -63,7 +63,7 @@ const AccountMenu = (props) => {
           <Link key={i} href={item.url}>
             <AccountMenuItem>
               {item.icon}
-              <Typography className="title">{item.title}</Typography>
+              <Typography className="title-menu">{item.title}</Typography>
             </AccountMenuItem>
           </Link>
         ))}

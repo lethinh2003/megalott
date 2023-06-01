@@ -3,6 +3,7 @@ import PriceChangeOutlinedIcon from "@mui/icons-material/PriceChangeOutlined";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Image from "next/image";
+import Link from "next/link";
 import Money from "./Money";
 const AccountInfo = ({ user }) => {
   const AccountInfoContainer = styled(Box)(({ theme }) => ({
@@ -202,10 +203,17 @@ const AccountInfo = ({ user }) => {
           </Box>
         </Box>
         <TransactionBox>
-          <Box className="item">
-            <AddCardOutlinedIcon />
-            <Typography>Nạp tiền</Typography>
-          </Box>
+          <Link href="/naptien">
+            <Box
+              className="item"
+              sx={{
+                cursor: "pointer",
+              }}
+            >
+              <AddCardOutlinedIcon />
+              <Typography>Nạp tiền</Typography>
+            </Box>
+          </Link>
           <Box className="item">
             <PriceChangeOutlinedIcon />
             <Typography>Rút tiền</Typography>

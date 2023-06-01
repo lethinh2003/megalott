@@ -8,4 +8,9 @@ const convertTime = (timeISOString) => {
 
   return result;
 };
+export const convertDateTime = (timeISOString) => {
+  let result = dayjs(timeISOString).format("YYYY-MM-DD HH:mm");
+
+  return result;
+};
 export default convertTime;
