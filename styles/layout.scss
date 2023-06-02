@@ -138,3 +138,42 @@ pre {
   transform: rotate(45deg);
   width: 0.5rem;
 }
+
+@-webkit-keyframes slotScroll {
+  0% {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-87%);
+  }
+}
+
+@keyframes slotScroll {
+  0% {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(-87%);
+  }
+}
+.box-quay .box .slot-column .slot-transform.slot-scroll[data-col="0"] {
+  -webkit-animation-delay: 0.12s;
+  animation-delay: 0.12s;
+}
+
+.box-quay .box .slot-column .slot-transform.slot-scroll[data-col="1"] {
+  -webkit-animation-delay: 0.24s;
+  animation-delay: 0.24s;
+}
+
+.box-quay .box .slot-column .slot-transform.slot-scroll[data-col="2"] {
+  -webkit-animation-delay: 0.36s;
+  animation-delay: 0.36s;
+}
+
+.box-quay .box .slot-column .slot-transform.slot-scroll[data-col="3"] {
+  -webkit-animation-delay: 0.48s;
+  animation-delay: 0.48s;
+}
