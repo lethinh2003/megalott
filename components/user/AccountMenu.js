@@ -35,12 +35,12 @@ const AccountMenu = (props) => {
     {
       icon: <PaymentsOutlinedIcon />,
       title: "Lịch sử rút",
-      url: "",
+      url: "/lichsuruttien",
     },
     {
       icon: <AccountBalanceOutlinedIcon />,
       title: "Liên kết ngân hàng",
-      url: "",
+      url: "/lienketnganhang",
     },
     {
       icon: <LogoutOutlinedIcon />,

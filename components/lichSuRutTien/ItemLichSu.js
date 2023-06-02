@@ -30,7 +30,7 @@ const ItemLichSu = ({ item }) => {
                 textTransform: "uppercase",
               }}
             >
-              {item.nganHang}
+              {item.nganHang?.tenNganHang}
             </Typography>
             {convertTinhTrang(item.tinhTrang)}
           </Box>
@@ -48,8 +48,18 @@ const ItemLichSu = ({ item }) => {
               fontSize: "1.3rem",
             }}
           >
-            Nội dung: {item.noiDung}
+            Thông tin: {item.nganHang?.tenNganHang} - {item.nganHang?.tenChuTaiKhoan} - {item.nganHang?.soTaiKhoan}
           </Typography>
+          {item.noiDung && (
+            <Typography
+              sx={{
+                color: "#b7b7b7",
+                fontSize: "1.3rem",
+              }}
+            >
+              Nội dung: {item.noiDung}
+            </Typography>
+          )}
         </Box>
         <Box
           sx={{

@@ -19,13 +19,14 @@ const Money = () => {
           toast.error("Có lỗi xảy ra khi lấy thông tin tiền tệ");
         }
       });
-      socket.on("set-current-balance", (data) => {
+      socket.off("set-current-balance").on("set-current-balance", (data) => {
         dispatch(setBalance(data));
       });
-      socket.on("update-current-balance", (data) => {
+      socket.off("update-current-balance").on("update-current-balance", (data) => {
         console.log("update balance", data);
         dispatch(updateBalance(data));
       });
+
       return () => {
         socket.off("set-current-balance");
         socket.off("update-current-balance");

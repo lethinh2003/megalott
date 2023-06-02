@@ -35,9 +35,7 @@ const Layout = (props) => {
           <Box
             sx={{
               padding: "10px",
-              position: "relative",
-              zIndex: 1,
-              paddingBottom: "70px",
+              paddingBottom: "10rem",
             }}
           >
             {props.children}

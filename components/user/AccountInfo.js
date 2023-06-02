@@ -214,10 +214,17 @@ const AccountInfo = ({ user }) => {
               <Typography>Nạp tiền</Typography>
             </Box>
           </Link>
-          <Box className="item">
-            <PriceChangeOutlinedIcon />
-            <Typography>Rút tiền</Typography>
-          </Box>
+          <Link href="/ruttien">
+            <Box
+              sx={{
+                cursor: "pointer",
+              }}
+              className="item"
+            >
+              <PriceChangeOutlinedIcon />
+              <Typography>Rút tiền</Typography>
+            </Box>
+          </Link>
         </TransactionBox>
       </AccountInfoContainer>
     </>

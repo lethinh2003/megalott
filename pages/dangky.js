@@ -28,7 +28,7 @@ const DangKy = () => {
       .required("Vui lòng nhập tài khoản")
       .min(6, "Tài khoản phải từ 6 kí tự trở lên")
       .trim("Tài khoản không hợp lế")
-      .matches(/^\S*$/, "Tài khoản không hợp lế")
+      .matches(/^\S*$/, "Tài khoản không hợp lệ")
       .strict(true),
     password: Yup.string()
       .required("Vui lòng nhập mật khẩu")
