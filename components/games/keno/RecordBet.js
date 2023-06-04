@@ -4,7 +4,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import SocketContext from "../../../context/socket";
 import BoxQuay from "./BoxQuay";
 import CountdownTimer from "./CountdownTimer";
-
+import DatCuoc from "./DatCuoc";
 const RecordBet = () => {
   const { data: session, status } = useSession();
   const [countdownTime, setCountdownTime] = useState(null);
@@ -12,6 +12,7 @@ const RecordBet = () => {
   const [isRunning, setIsRunning] = useState(false);
   const [isResetGame, setIsResetGame] = useState(false);
   const [ketQuaRandom, setKetQuaRandom] = useState([]);
+  const [phienHoanTatMoiNhat, setPhienHoanTatMoiNhat] = useState({});
   let countdownTimeRef = useRef();
   const socket = useContext(SocketContext);
   useEffect(() => {
@@ -30,11 +31,18 @@ const RecordBet = () => {
       socket.off("ketqua").on("ketqua", ({ ketQuaRandom }) => {
         setKetQuaRandom(ketQuaRandom);
       });
-      socket.off("lichSuGame").on("lichSuGame", ({ lichSuDatCuoc }) => {
-        console.log(lichSuDatCuoc);
+
+      socket.off("phienHoanTatMoiNhat").on("phienHoanTatMoiNhat", ({ phienHoanTatMoiNhat }) => {
+        setPhienHoanTatMoiNhat(phienHoanTatMoiNhat);
       });
 
-      return () => {};
+      return () => {
+        socket.off("hienThiPhien");
+        socket.off("timer");
+        socket.off("running");
+        socket.off("ketqua");
+        socket.off("phienHoanTatMoiNhat");
+      };
     }
   }, [socket, status]);
   useEffect(() => {
@@ -126,11 +134,11 @@ const RecordBet = () => {
         <BoxQuay
           isRunning={isRunning}
           ketQuaRandom={ketQuaRandom}
-          countdownTime={countdownTime}
-          setCountdownTime={setCountdownTime}
           setIsResetGame={setIsResetGame}
+          phienHoanTatMoiNhat={phienHoanTatMoiNhat}
         ></BoxQuay>
       </Box>
+      <DatCuoc isRunning={isRunning} phien={phien} />
     </>
   );
 };

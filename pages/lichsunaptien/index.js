@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -54,13 +54,11 @@ const Home = () => {
       {isLoading && <LoadingBox isLoading={isLoading} />}
       {isFetchingNextPage && <LoadingBox isLoading={isFetchingNextPage} />}
       <Layout>
-        <Typography component={"h1"} className="title-h1">
-          Lịch sử nạp tiền
-        </Typography>
+        <h1 className="title-h1">Lịch sử nạp tiền</h1>
 
         <Box
           sx={{
-            paddingTop: "5rem",
+            paddingTop: "50px",
           }}
         >
           {!isLoading && data?.pages.map((group, i) => <DanhSachLichSu key={i} list={group.data} />)}

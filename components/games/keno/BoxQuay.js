@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { memo, useEffect, useRef, useState } from "react";
 
-const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom }) => {
+const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom, phienHoanTatMoiNhat }) => {
   const triggerRef = useRef();
   const [firstSlot, setFirstSlot] = useState(0);
   const [secondSlot, setSecondSlot] = useState(0);
@@ -10,6 +10,17 @@ const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom }) => {
   const [fourthSlot, setFourthSlot] = useState(0);
   const [fifthSlot, setFifthSlot] = useState(0);
   const [isTrigger, setIsTrigger] = useState(false);
+  useEffect(() => {
+    if (phienHoanTatMoiNhat && phienHoanTatMoiNhat.ketQua) {
+      const ketQuaRandom = phienHoanTatMoiNhat.ketQua;
+
+      setFirstSlot(ketQuaRandom[0]);
+      setSecondSlot(ketQuaRandom[1]);
+      setThirdSlot(ketQuaRandom[2]);
+      setFourthSlot(ketQuaRandom[3]);
+      setFifthSlot(ketQuaRandom[4]);
+    }
+  }, [phienHoanTatMoiNhat]);
 
   useEffect(() => {
     if (isRunning) {
@@ -32,10 +43,6 @@ const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom }) => {
       clearTimeout(triggerRef.current);
     };
   }, [isTrigger]);
-
-  const getRandomArbitrary = (min, max) => {
-    return Math.floor(Math.random() * (max - min) + min);
-  };
 
   const BoxContainer = styled(Box)(({ theme }) => ({
     background: "#00b977",

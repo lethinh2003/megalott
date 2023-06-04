@@ -15,7 +15,7 @@ const HuongDan = () => {
           color: (theme) => theme.palette.text.secondary,
         }}
       >
-        <Typography className="title">Hướng dẫn nạp tiền</Typography>
+        <h2 className="title">Hướng dẫn nạp tiền</h2>
         <Typography component="ul">
           <li>Chuyển khoản đến đúng thông tin ngân hàng ở trên.</li>
           <li>Tiền sẽ tự động vào tài khoản trong vòng 1 phút, nếu thấy lâu có thể liên hệ bộ phận hỗ trợ.</li>

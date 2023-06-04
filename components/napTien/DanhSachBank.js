@@ -12,7 +12,7 @@ const DanhSachBank = ({ danhSachNganHang }) => {
   };
   return (
     <>
-      <Typography className="title">Chọn ngân hàng muốn nạp tiền</Typography>
+      <h2 className="title">Chọn ngân hàng muốn nạp tiền</h2>
       <Box
         sx={{
           display: "grid",
@@ -39,6 +39,7 @@ const DanhSachBank = ({ danhSachNganHang }) => {
                 borderRadius: "15px",
                 backgroundColor: "#ffffff",
                 justifyContent: "center",
+                cursor: "pointer",
               }}
             >
               <Box
@@ -57,6 +58,19 @@ const DanhSachBank = ({ danhSachNganHang }) => {
             </Box>
           ))}
       </Box>
+      {danhSachNganHang && danhSachNganHang.length === 0 && (
+        <Box
+          sx={{
+            border: (theme) => `1px solid ${theme.palette.color.primary}`,
+            padding: "10px",
+            marginTop: "30px",
+
+            color: (theme) => theme.palette.text.secondary,
+          }}
+        >
+          <Typography sx={{}}>Hệ thống nạp tiền đang bảo trì, vui lòng quay lại sau</Typography>
+        </Box>
+      )}
       {selectedBank && (
         <Box
           sx={{

@@ -2,10 +2,12 @@ import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import Layout from "../../../components/Layout";
+import BoxLichSu from "../../../components/games/keno/BoxLichSu";
 import RecordBet from "../../../components/games/keno/RecordBet";
 const Home = () => {
   const dispatch = useDispatch();
   const { data: session, status } = useSession();
+
   const router = useRouter();
   if (status === "unauthenticated") {
     router.push("/dangnhap");
@@ -16,6 +18,7 @@ const Home = () => {
     <>
       <Layout>
         <RecordBet />
+        <BoxLichSu />
       </Layout>
     </>
   );

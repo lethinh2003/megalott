@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Button, FormControl, Select, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, Select, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
 import { useState } from "react";
@@ -7,7 +7,7 @@ import { Controller, useForm } from "react-hook-form";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { OptionMenu, OptionMenuItem } from "../../custom/optionMenu";
-import { inputStyles, rootInputStyles, rootStyles } from "../../custom/textfield";
+import { InputComponent, inputStyles, rootInputStyles, rootStyles } from "../../custom/textfield";
 import { listBank } from "../../utils/listBank";
 import LoadingBox from "../homePage/LoadingBox";
 const ThemNganHang = () => {
@@ -150,7 +150,7 @@ const ThemNganHang = () => {
               name="chuTaiKhoan"
               control={control}
               render={({ field }) => (
-                <TextField
+                <InputComponent
                   placeholder="Chủ tài khoản"
                   size="small"
                   fullWidth
@@ -186,7 +186,7 @@ const ThemNganHang = () => {
               name="soTaiKhoan"
               control={control}
               render={({ field }) => (
-                <TextField
+                <InputComponent
                   placeholder="Số tài khoản"
                   size="small"
                   fullWidth

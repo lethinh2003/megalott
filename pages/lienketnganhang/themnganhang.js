@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Layout from "../../components/Layout";
@@ -15,13 +15,11 @@ const Home = () => {
   return (
     <>
       <Layout>
-        <Typography component={"h1"} className="title-h1">
-          Thêm ngân hàng
-        </Typography>
+        <h1 className="title-h1">Thêm ngân hàng</h1>
 
         <Box
           sx={{
-            paddingTop: "5rem",
+            paddingTop: "50px",
             color: (theme) => theme.palette.text.secondary,
           }}
         >

@@ -195,7 +195,7 @@ const AccountInfo = ({ user }) => {
             <Typography sx={{}}>{user.taiKhoan}</Typography>
             <Typography
               sx={{
-                fontSize: "32px",
+                fontSize: "3rem",
               }}
             >
               <Money />

@@ -18,7 +18,7 @@ const AccountMenu = (props) => {
       color: theme.palette.color.primary,
     },
     "& .title-menu": {
-      fontSize: "17px",
+      fontSize: "1.7rem",
     },
   }));
   const listMenu = [

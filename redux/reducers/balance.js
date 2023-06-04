@@ -1,6 +1,6 @@
 import { SET_BALANCE, SET_DISPLAY_BALANCE, UPDATE_BALANCE } from "../actions/constants";
 const initialState = {
-  display: false,
+  display: true,
   balance: 0,
 };
 const balanceReducer = (state = initialState, payload) => {

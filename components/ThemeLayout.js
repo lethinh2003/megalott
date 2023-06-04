@@ -1,7 +1,6 @@
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { createGlobalStyle } from "styled-components";
 import useAuth from "../hooks/useAuth";
-import BackToTop from "./homePage/BackToTop";
 
 const GlobalStyle = createGlobalStyle`
   body {
@@ -62,7 +61,7 @@ const getDesignTokens = (mode) => ({
           background: "linear-gradient(180deg,#ee8d8d,red)",
           padding: "4px 13px",
           "&.Mui-disabled": {
-            color: "#0b9ad18c",
+            opacity: 0.8,
           },
           "&:hover": {
             boxShadow: "none",
@@ -127,7 +126,6 @@ const ThemeLayout = (props) => {
       <ThemeProvider theme={theme}>
         <GlobalStyle theme={theme} />
         {props.children}
-        <BackToTop />
       </ThemeProvider>
     </>
   );

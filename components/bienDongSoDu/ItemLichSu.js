@@ -17,7 +17,6 @@ const ItemLichSu = ({ item }) => {
       >
         <Typography
           sx={{
-            color: "#b7b7b7",
             fontSize: "1.3rem",
           }}
         >
@@ -26,7 +25,6 @@ const ItemLichSu = ({ item }) => {
         </Typography>
         <Typography
           sx={{
-            color: "#b7b7b7",
             fontSize: "1.3rem",
           }}
         >
@@ -34,7 +32,20 @@ const ItemLichSu = ({ item }) => {
         </Typography>
         <Typography
           sx={{
-            color: "#b7b7b7",
+            fontSize: "1.3rem",
+          }}
+        >
+          Thay đổi: {item.tienSau - item.tienTruoc > 0 ? "+" : ""}
+          <NumericFormat
+            value={item.tienSau - item.tienTruoc}
+            displayType="text"
+            allowLeadingZeros
+            thousandSeparator=","
+          />
+          đ
+        </Typography>
+        <Typography
+          sx={{
             fontSize: "1.3rem",
           }}
         >
@@ -43,11 +54,10 @@ const ItemLichSu = ({ item }) => {
 
         <Typography
           sx={{
-            color: "#b7b7b7",
             fontSize: "1.3rem",
           }}
         >
-          {convertDateTime(item.createdAt)}
+          Thời gian: {convertDateTime(item.createdAt)}
         </Typography>
       </Box>
     </>

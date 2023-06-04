@@ -10,33 +10,35 @@ const Header = (props) => {
     <>
       <div className="header">
         <div className="header-top">
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-            }}
-          >
-            <Typography
-              className="logo"
+          <Link href="/">
+            <Box
               sx={{
-                color: "#ffffff",
-                fontSize: "3rem",
-                fontWeight: "bold",
-                fontStyle: "italic",
+                display: "flex",
+                alignItems: "center",
+                gap: "10px",
+                cursor: "pointer",
               }}
             >
-              Megalott
-            </Typography>
-            <img
-              src="https://i.imgur.com/tUCRwwB.png"
-              style={{
-                width: "40px",
-                height: "40px",
-              }}
-            />
-          </Box>
-
+              <Typography
+                className="logo"
+                sx={{
+                  color: "#ffffff",
+                  fontSize: "3rem",
+                  fontWeight: "bold",
+                  fontStyle: "italic",
+                }}
+              >
+                Megalott
+              </Typography>
+              <img
+                src="https://i.imgur.com/tUCRwwB.png"
+                style={{
+                  width: "40px",
+                  height: "40px",
+                }}
+              />
+            </Box>
+          </Link>
           <Box
             className="header-right"
             sx={{

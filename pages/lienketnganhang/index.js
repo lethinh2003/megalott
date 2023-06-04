@@ -41,13 +41,11 @@ const Home = () => {
       {isLoading && <LoadingBox isLoading={isLoading} />}
 
       <Layout>
-        <Typography component={"h1"} className="title-h1">
-          Liên kết ngân hàng
-        </Typography>
+        <h1 className="title-h1">Liên kết ngân hàng</h1>
 
         <Box
           sx={{
-            paddingTop: "5rem",
+            paddingTop: "50px",
             color: (theme) => theme.palette.text.secondary,
           }}
         >

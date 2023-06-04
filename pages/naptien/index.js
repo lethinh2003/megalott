@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
@@ -36,13 +36,11 @@ const Home = () => {
     <>
       {isLoading && <LoadingBox isLoading={isLoading} />}
       <Layout>
-        <Typography component={"h1"} className="title-h1">
-          Nạp tiền
-        </Typography>
+        <h1 className="title-h1">Nạp tiền</h1>
         {!isLoading && data && data.data && (
           <Box
             sx={{
-              paddingTop: "5rem",
+              paddingTop: "50px",
             }}
           >
             <DanhSachBank danhSachNganHang={data.data} />

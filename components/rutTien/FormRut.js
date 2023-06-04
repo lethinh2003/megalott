@@ -1,5 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import { Box, Button, FormControl, Select, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, Select, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
 import { useState } from "react";
@@ -8,7 +8,7 @@ import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import * as Yup from "yup";
 import { OptionMenu, OptionMenuItem } from "../../custom/optionMenu";
-import { inputStyles, rootInputStyles, rootStyles } from "../../custom/textfield";
+import { InputComponent, inputStyles, rootInputStyles, rootStyles } from "../../custom/textfield";
 
 import LoadingBox from "../homePage/LoadingBox";
 const FormRut = ({ listBank }) => {
@@ -140,7 +140,7 @@ const FormRut = ({ listBank }) => {
               name="soTien"
               control={control}
               render={({ field }) => (
-                <TextField
+                <InputComponent
                   placeholder="Số tiền"
                   size="small"
                   type="number"
