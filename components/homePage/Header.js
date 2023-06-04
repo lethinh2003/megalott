@@ -50,10 +50,24 @@ const Header = (props) => {
             {status === "unauthenticated" && (
               <>
                 <Link href="/dangnhap">
-                  <Button className="btn-login">Đăng nhập</Button>
+                  <Button
+                    className="btn-login"
+                    sx={{
+                      background: "linear-gradient(124.32deg, #ffce1f 12.08%, #ccd26d 85.02%)",
+                    }}
+                  >
+                    Đăng nhập
+                  </Button>
                 </Link>
                 <Link href="/dangky">
-                  <Button className="btn-register">Đăng ký</Button>
+                  <Button
+                    className="btn-register"
+                    sx={{
+                      background: "linear-gradient(124.32deg, #50a1f2 12.08%, #85daff 85.02%)",
+                    }}
+                  >
+                    Đăng ký
+                  </Button>
                 </Link>
               </>
             )}

@@ -54,18 +54,6 @@ const RecordBet = () => {
     }
   }, [isResetGame]);
 
-  useEffect(() => {
-    if (countdownTime !== null && countdownTime > 0) {
-      countdownTimeRef.current = setInterval(() => {
-        setCountdownTime((countdownTime) => countdownTime - 1);
-      }, 1000);
-    } else {
-      clearInterval(countdownTimeRef.current);
-    }
-    return () => {
-      clearInterval(countdownTimeRef.current);
-    };
-  }, [countdownTime]);
   return (
     <>
       <Box

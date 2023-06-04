@@ -1,7 +1,7 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { Box, Button, FormControl, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import { Box, Button, FormControl, IconButton, InputAdornment, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import { getSession, signIn, useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import * as Yup from "yup";
 import Layout from "../components/Layout";
 import LoadingBox from "../components/homePage/LoadingBox";
-import { inputStyles, rootInputStyles, rootStyles } from "../custom/textfield";
+import { InputComponent, inputStyles, rootInputStyles, rootStyles } from "../custom/textfield";
 const Login = () => {
   const { data: session, status } = useSession();
 
@@ -96,13 +96,11 @@ const Login = () => {
         <>
           <LoadingBox isSuccess={isSuccess} isLoading={isLoading} />
           <Layout>
-            <Typography component={"h1"} className="title-h1">
-              Đăng nhập
-            </Typography>
+            <h1 className="title-h1">Đăng nhập</h1>
 
             <form
               style={{
-                paddingTop: "5rem",
+                paddingTop: "60px",
                 display: "flex",
                 flexDirection: "column",
                 width: "100%",
@@ -121,7 +119,7 @@ const Login = () => {
                   name="account"
                   control={control}
                   render={({ field }) => (
-                    <TextField
+                    <InputComponent
                       placeholder="Tài khoản"
                       size="small"
                       fullWidth
@@ -163,7 +161,7 @@ const Login = () => {
                   name="password"
                   control={control}
                   render={({ field }) => (
-                    <TextField
+                    <InputComponent
                       placeholder="Mật khẩu"
                       type={showPassword ? "text" : "password"}
                       size="small"
