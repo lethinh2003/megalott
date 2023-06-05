@@ -1,9 +1,9 @@
 import { Box, Button, Typography } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useContext, useEffect, useRef, useState } from "react";
-import SocketContext from "../../../context/socket";
-import BoxQuay from "./BoxQuay";
-import CountdownTimer from "./CountdownTimer";
+import SocketContext from "../../../../context/socket";
+import BoxQuay from "../BoxQuay";
+import CountdownTimer from "../CountdownTimer";
 import DatCuoc from "./DatCuoc";
 const RecordBet = () => {
   const { data: session, status } = useSession();
@@ -17,37 +17,36 @@ const RecordBet = () => {
   const socket = useContext(SocketContext);
   useEffect(() => {
     if (socket && status === "authenticated") {
-      socket.emit("join-room-keno1p");
-      socket.off("hienThiPhien").on("hienThiPhien", (data) => {
+      socket.emit("join-room-keno5p");
+      socket.off("hienThiPhien5P").on("hienThiPhien5P", (data) => {
         setPhien(data.phien);
       });
-      socket.off("timer").on("timer", (data) => {
+      socket.off("timer5P").on("timer5P", (data) => {
         setCountdownTime(data.current_time);
       });
 
-      socket.off("running").on("running", () => {
+      socket.off("running5P").on("running5P", () => {
         setIsRunning(true);
       });
-      socket.off("ketqua").on("ketqua", ({ ketQuaRandom }) => {
+      socket.off("ketqua5P").on("ketqua5P", ({ ketQuaRandom }) => {
         setKetQuaRandom(ketQuaRandom);
       });
 
-      socket.off("phienHoanTatMoiNhat").on("phienHoanTatMoiNhat", ({ phienHoanTatMoiNhat }) => {
+      socket.off("phienHoanTatMoiNhat5P").on("phienHoanTatMoiNhat5P", ({ phienHoanTatMoiNhat }) => {
         setPhienHoanTatMoiNhat(phienHoanTatMoiNhat);
       });
 
       return () => {
-        socket.off("hienThiPhien");
-        socket.off("timer");
-        socket.off("running");
-        socket.off("ketqua");
-        socket.off("phienHoanTatMoiNhat");
+        socket.off("hienThiPhien5P");
+        socket.off("timer5P");
+        socket.off("running5P");
+        socket.off("ketqua5P");
+        socket.off("phienHoanTatMoiNhat5P");
       };
     }
   }, [socket, status]);
   useEffect(() => {
     if (isResetGame && socket) {
-      socket.emit("roundstart");
       setIsRunning(false);
       setCountdownTime(null);
       setIsResetGame(false);

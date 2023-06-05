@@ -5,7 +5,7 @@ import { memo, useState } from "react";
 import { NumericFormat } from "react-number-format";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import LoadingBox from "../../homePage/LoadingBox";
+import LoadingBox from "../../../homePage/LoadingBox";
 const DatCuoc = ({ isRunning, phien }) => {
   const balance = useSelector((state) => state.balance.balance);
 
@@ -81,7 +81,7 @@ const DatCuoc = ({ isRunning, phien }) => {
         loaiCuoc: loaiCuocSelected,
         tienCuoc: tienCuoc,
       };
-      const results = await axios.post(`${process.env.ENDPOINT_SERVER}/api/v1/games/keno1p/dat-cuoc`, {
+      const results = await axios.post(`${process.env.ENDPOINT_SERVER}/api/v1/games/keno5p/dat-cuoc`, {
         phien,
         datCuoc,
       });

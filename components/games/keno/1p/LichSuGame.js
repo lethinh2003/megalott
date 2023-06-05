@@ -3,9 +3,9 @@ import axios from "axios";
 import { useSession } from "next-auth/react";
 import { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
-import SocketContext from "../../../context/socket";
-import { convertDateTime } from "../../../utils/convertTime";
-import LoadingBox from "../../homePage/LoadingBox";
+import SocketContext from "../../../../context/socket";
+import { convertDateTime } from "../../../../utils/convertTime";
+import LoadingBox from "../../../homePage/LoadingBox";
 const LichSuGame = () => {
   const { data: session, status } = useSession();
   const [listLichSu, setListLichSu] = useState([]);

@@ -47,7 +47,7 @@ const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom, phienHoanTatMoiNhat 
   const BoxContainer = styled(Box)(({ theme }) => ({
     background: "#00b977",
     borderRadius: "10px",
-    height: "120px",
+    height: "12rem",
     marginTop: "30px",
     padding: "10px",
     position: "relative",
@@ -126,13 +126,13 @@ const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom, phienHoanTatMoiNhat 
             background: "#e1e1ec",
             borderRadius: "50%",
             color: "#0006",
-            fontSize: "3.3rem",
+            fontSize: "3rem",
             fontWeight: 700,
-            height: "60px",
+            height: "6rem",
             lineHeight: "60px",
 
             margin: "0 auto 5px",
-            width: "60px",
+            width: "6rem",
             "&.active": {
               background: "#00e065",
               color: "#fff",

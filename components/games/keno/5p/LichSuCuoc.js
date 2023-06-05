@@ -4,9 +4,9 @@ import { useSession } from "next-auth/react";
 import { useContext, useEffect, useState } from "react";
 import { NumericFormat } from "react-number-format";
 import { useQuery } from "react-query";
-import SocketContext from "../../../context/socket";
-import { convertDateTime } from "../../../utils/convertTime";
-import LoadingBox from "../../homePage/LoadingBox";
+import SocketContext from "../../../../context/socket";
+import { convertDateTime } from "../../../../utils/convertTime";
+import LoadingBox from "../../../homePage/LoadingBox";
 
 const LichSuCuoc = () => {
   const { data: session, status } = useSession();
@@ -15,8 +15,8 @@ const LichSuCuoc = () => {
   const socket = useContext(SocketContext);
   useEffect(() => {
     if (socket && status === "authenticated") {
-      socket.emit("join-room-keno1p");
-      socket.off("updateLichSuCuocCaNhan").on("updateLichSuCuocCaNhan", (data) => {
+      socket.emit("join-room-keno5p");
+      socket.off("updateLichSuCuocCaNhan5P").on("updateLichSuCuocCaNhan5P", (data) => {
         setListLichSu((state) => {
           let currentArray = state;
           const checkPhienTonTai = state.find((item) => item.phien.phien === data.phien.phien);
@@ -33,7 +33,7 @@ const LichSuCuoc = () => {
         });
       });
       return () => {
-        socket.off("updateLichSuCuocCaNhan");
+        socket.off("updateLichSuCuocCaNhan5P");
       };
     }
   }, [socket, status]);
@@ -42,11 +42,11 @@ const LichSuCuoc = () => {
     if (status === "unauthenciated") {
       return undefined;
     }
-    const results = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/games/keno1p/lich-su-cuoc`);
+    const results = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/games/keno5p/lich-su-cuoc`);
     return results.data;
   };
   const getListQuery = useQuery(
-    ["get-lich-su-cuoc-game-keno-1p", session ? session.user.taiKhoan : null],
+    ["get-lich-su-cuoc-game-keno-5p", session ? session.user.taiKhoan : null],
     () => callDataApi(status),
     {
       cacheTime: 0,
