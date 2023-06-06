@@ -1,14 +1,15 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useSession } from "next-auth/react";
 import { useContext, useEffect, useRef, useState } from "react";
 import SocketContext from "../../../../context/socket";
+import BoxInfor from "../BoxInfor";
 import BoxQuay from "../BoxQuay";
-import CountdownTimer from "../CountdownTimer";
 import DatCuoc from "./DatCuoc";
 const RecordBet = () => {
   const { data: session, status } = useSession();
   const [countdownTime, setCountdownTime] = useState(null);
   const [phien, setPhien] = useState(0);
+  const [isModal, setIsModal] = useState(false);
   const [isRunning, setIsRunning] = useState(false);
   const [isResetGame, setIsResetGame] = useState(false);
   const [ketQuaRandom, setKetQuaRandom] = useState([]);
@@ -47,7 +48,6 @@ const RecordBet = () => {
   }, [socket, status]);
   useEffect(() => {
     if (isResetGame && socket) {
-      socket.emit("roundstart");
       setIsRunning(false);
       setCountdownTime(null);
       setIsResetGame(false);
@@ -69,56 +69,7 @@ const RecordBet = () => {
           color: (theme) => theme.palette.text.secondary,
         }}
       >
-        <Box
-          sx={{
-            display: "flex",
-
-            justifyContent: "center",
-          }}
-        >
-          <Box
-            sx={{
-              textAlign: "center",
-
-              padding: "0px 20px",
-            }}
-          >
-            <Typography
-              sx={{
-                color: "#b7b7b7",
-                fontSize: "1.8rem",
-              }}
-            >
-              Phiên số
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: "1.8rem",
-                fontWeight: "bold",
-              }}
-            >
-              {phien}
-            </Typography>
-            <Button>Hướng dẫn cách chơi</Button>
-          </Box>
-          <Box
-            sx={{
-              textAlign: "center",
-
-              padding: "0px 20px",
-            }}
-          >
-            <Typography
-              sx={{
-                color: "#b7b7b7",
-                fontSize: "1.8rem",
-              }}
-            >
-              Thời gian còn lại
-            </Typography>
-            <CountdownTimer countdownTime={countdownTime} />
-          </Box>
-        </Box>
+        <BoxInfor phien={phien} countdownTime={countdownTime} isModal={isModal} setIsModal={setIsModal} />
         <BoxQuay
           isRunning={isRunning}
           ketQuaRandom={ketQuaRandom}

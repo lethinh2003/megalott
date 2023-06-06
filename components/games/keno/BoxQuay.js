@@ -114,7 +114,7 @@ const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom, phienHoanTatMoiNhat 
         verticalAlign: "bottom",
         width: "calc(20% - 0.10667rem)",
         "& .slot-transform": {
-          transform: "translateY(-115px)",
+          transform: "translateY(-11.7rem)",
           "&.slot-scroll": {
             WebkitAnimation: "slotScroll 3s cubic-bezier(0.65, 0.02, 0.65, 1.06)",
             animation: "slotScroll 3s cubic-bezier(0.65, 0.02, 0.65, 1.06)",

@@ -1,44 +1,51 @@
-import {
-  FormControl,
-  InputLabel,
-  OutlinedInput,
-  InputAdornment,
-  IconButton,
-  Button,
-  TextField,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogContentText,
-  DialogTitle,
-  Snackbar,
-  Alert,
-  Backdrop,
-  CircularProgress,
-} from "@mui/material";
+import { Button, Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
+import { styled } from "@mui/material/styles";
 
-import Visibility from "@mui/icons-material/Visibility";
-import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import { useState } from "react";
-
+const CustomDialog = styled(Dialog)(({ theme }) => ({
+  color: "#000",
+  "&.MuiDialog-root": {
+    width: "100%",
+    maxWidth: "540px",
+    left: "50%",
+    transform: "translateX(-50%)",
+  },
+  "& .MuiDialog-paper": {
+    borderRadius: "10px",
+  },
+  "& .MuiDialogContent-root": {
+    color: "#000",
+    fontSize: "1.5rem",
+    marginTop: "20px",
+  },
+  "& .MuiDialogActions-root": {
+    padding: theme.spacing(1),
+  },
+}));
 const Modal = (props) => {
-  const { isModal, setIsModal, title, setIsClickNotify } = props;
+  const { isModal, setIsModal, title } = props;
   const handleClose = () => {
     setIsModal(false);
-    if (setIsClickNotify) {
-      setIsClickNotify();
-    }
   };
   return (
     <>
-      <Dialog open={isModal} onClose={handleClose}>
-        <DialogTitle>{title}</DialogTitle>
+      <CustomDialog open={isModal} onClose={handleClose} disableScrollLock>
+        <DialogTitle
+          sx={{
+            backgroundColor: "#ff0000",
+            fontWeight: "bold",
+          }}
+        >
+          {title}
+        </DialogTitle>
         <DialogContent>{props.children}</DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleClose}>Ok</Button>
+        <DialogActions
+          sx={{
+            justifyContent: "center",
+          }}
+        >
+          <Button onClick={handleClose}>Đóng</Button>
         </DialogActions>
-      </Dialog>
+      </CustomDialog>
     </>
   );
 };
