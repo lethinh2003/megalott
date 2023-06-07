@@ -36,12 +36,7 @@ const nguoiDungSchema = new mongoose.Schema(
       type: Number,
       default: 0,
     },
-    lienKetNganHang: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: "LienKetNganHang",
-      },
-    ],
+
     role: {
       type: String,
       enum: ["user", "admin"],
