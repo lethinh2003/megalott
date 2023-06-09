@@ -30,6 +30,9 @@ const RecordBet = () => {
       socket.off("running3P").on("running3P", () => {
         setIsRunning(true);
       });
+      socket.off("stop3P").on("stop3P", () => {
+        setIsRunning(false);
+      });
       socket.off("ketqua3P").on("ketqua3P", ({ ketQuaRandom }) => {
         setKetQuaRandom(ketQuaRandom);
       });
@@ -42,6 +45,7 @@ const RecordBet = () => {
         socket.off("hienThiPhien3P");
         socket.off("timer3P");
         socket.off("running3P");
+        socket.off("stop3P");
         socket.off("ketqua3P");
         socket.off("phienHoanTatMoiNhat3P");
       };
@@ -72,12 +76,7 @@ const RecordBet = () => {
       >
         <BoxInfor phien={phien} countdownTime={countdownTime} isModal={isModal} setIsModal={setIsModal} />
 
-        <BoxQuay
-          isRunning={isRunning}
-          ketQuaRandom={ketQuaRandom}
-          setIsResetGame={setIsResetGame}
-          phienHoanTatMoiNhat={phienHoanTatMoiNhat}
-        ></BoxQuay>
+        <BoxQuay isRunning={isRunning} ketQuaRandom={ketQuaRandom} phienHoanTatMoiNhat={phienHoanTatMoiNhat}></BoxQuay>
       </Box>
       <DatCuoc isRunning={isRunning} phien={phien} />
     </>

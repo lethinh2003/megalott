@@ -1,19 +1,17 @@
 import { Box } from "@mui/material";
 import { styled } from "@mui/material/styles";
-import { memo, useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 
-const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom, phienHoanTatMoiNhat }) => {
-  const triggerRef = useRef();
+const BoxQuay = ({ isRunning, ketQuaRandom, phienHoanTatMoiNhat }) => {
   const [firstSlot, setFirstSlot] = useState(0);
   const [secondSlot, setSecondSlot] = useState(0);
   const [thirdSlot, setThirdSlot] = useState(0);
   const [fourthSlot, setFourthSlot] = useState(0);
   const [fifthSlot, setFifthSlot] = useState(0);
-  const [isTrigger, setIsTrigger] = useState(false);
+
   useEffect(() => {
     if (phienHoanTatMoiNhat && phienHoanTatMoiNhat.ketQua) {
       const ketQuaRandom = phienHoanTatMoiNhat.ketQua;
-
       setFirstSlot(ketQuaRandom[0]);
       setSecondSlot(ketQuaRandom[1]);
       setThirdSlot(ketQuaRandom[2]);
@@ -23,26 +21,14 @@ const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom, phienHoanTatMoiNhat 
   }, [phienHoanTatMoiNhat]);
 
   useEffect(() => {
-    if (isRunning) {
-      setIsTrigger(true);
+    if (!isRunning) {
+      setFirstSlot(ketQuaRandom[0]);
+      setSecondSlot(ketQuaRandom[1]);
+      setThirdSlot(ketQuaRandom[2]);
+      setFourthSlot(ketQuaRandom[3]);
+      setFifthSlot(ketQuaRandom[4]);
     }
   }, [isRunning]);
-  useEffect(() => {
-    if (isTrigger) {
-      triggerRef.current = setTimeout(() => {
-        setFirstSlot(ketQuaRandom[0]);
-        setSecondSlot(ketQuaRandom[1]);
-        setThirdSlot(ketQuaRandom[2]);
-        setFourthSlot(ketQuaRandom[3]);
-        setFifthSlot(ketQuaRandom[4]);
-        setIsTrigger(false);
-        setIsResetGame(true);
-      }, 3000);
-    }
-    return () => {
-      clearTimeout(triggerRef.current);
-    };
-  }, [isTrigger]);
 
   const BoxContainer = styled(Box)(({ theme }) => ({
     background: "#00b977",
@@ -116,8 +102,8 @@ const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom, phienHoanTatMoiNhat 
         "& .slot-transform": {
           transform: "translateY(-11.7rem)",
           "&.slot-scroll": {
-            WebkitAnimation: "slotScroll 3s cubic-bezier(0.65, 0.02, 0.65, 1.06)",
-            animation: "slotScroll 3s cubic-bezier(0.65, 0.02, 0.65, 1.06)",
+            WebkitAnimation: "slotScroll 3s cubic-bezier(0.65, 0.02, 0.65, 1.06) infinite",
+            animation: "slotScroll 3s cubic-bezier(0.65, 0.02, 0.65, 1.06) infinite",
             WebkitAnimationFillMode: "forwards",
             animationFillMode: "forwards",
           },
@@ -167,7 +153,7 @@ const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom, phienHoanTatMoiNhat 
         <Box className="box">
           {Array.from({ length: 5 }).map((item, i) => (
             <Box className="slot-column" key={i}>
-              <Box className={isTrigger ? "slot-transform slot-scroll" : "slot-transform"} data-col={i}>
+              <Box className={isRunning ? "slot-transform slot-scroll" : "slot-transform"} data-col={i}>
                 <Box className="slot-num">0</Box>
                 <Box className="slot-num">1</Box>
                 <Box className="slot-num active">{convertSlot(i)}</Box>
@@ -187,4 +173,4 @@ const BoxQuay = ({ setIsResetGame, isRunning, ketQuaRandom, phienHoanTatMoiNhat 
     </>
   );
 };
-export default memo(BoxQuay);
+export default React.memo(BoxQuay);

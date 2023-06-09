@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
 import { memo, useState } from "react";
@@ -81,7 +81,7 @@ const DatCuoc = ({ isRunning, phien }) => {
     <>
       <LoadingBox isLoading={isLoading} />
       <BoxContainer>
-        <Typography className="title">Đặt cược</Typography>
+        <h2 className="title">Đặt cược</h2>
         <LoaiBiInput ballSelected={ballSelected} setBallSelected={setBallSelected} />
 
         <LoaiCuocInput loaiCuocSelected={loaiCuocSelected} setLoaiCuocSelected={setLoaiCuocSelected} />

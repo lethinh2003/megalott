@@ -26,13 +26,15 @@ const RecordBet = () => {
         setCountdownTime(data.current_time);
       });
 
-      socket.off("running").on("running", () => {
-        setIsRunning(true);
-      });
       socket.off("ketqua").on("ketqua", ({ ketQuaRandom }) => {
         setKetQuaRandom(ketQuaRandom);
       });
-
+      socket.off("running").on("running", () => {
+        setIsRunning(true);
+      });
+      socket.off("stop").on("stop", () => {
+        setIsRunning(false);
+      });
       socket.off("phienHoanTatMoiNhat").on("phienHoanTatMoiNhat", ({ phienHoanTatMoiNhat }) => {
         setPhienHoanTatMoiNhat(phienHoanTatMoiNhat);
       });
@@ -41,6 +43,7 @@ const RecordBet = () => {
         socket.off("hienThiPhien");
         socket.off("timer");
         socket.off("running");
+        socket.off("stop");
         socket.off("ketqua");
         socket.off("phienHoanTatMoiNhat");
       };
@@ -70,12 +73,7 @@ const RecordBet = () => {
         }}
       >
         <BoxInfor phien={phien} countdownTime={countdownTime} isModal={isModal} setIsModal={setIsModal} />
-        <BoxQuay
-          isRunning={isRunning}
-          ketQuaRandom={ketQuaRandom}
-          setIsResetGame={setIsResetGame}
-          phienHoanTatMoiNhat={phienHoanTatMoiNhat}
-        ></BoxQuay>
+        <BoxQuay isRunning={isRunning} ketQuaRandom={ketQuaRandom} phienHoanTatMoiNhat={phienHoanTatMoiNhat}></BoxQuay>
       </Box>
       <DatCuoc isRunning={isRunning} phien={phien} />
     </>
