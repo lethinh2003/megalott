@@ -2,6 +2,32 @@ import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import Layout from "../components/Layout";
+const listGame = [
+  {
+    title: "Keno1P",
+    desc: "Đoán số để dành chiến thắng",
+    img: "https://i.imgur.com/x6zOE0C.png",
+    link: "/games/keno1p",
+  },
+  {
+    title: "Keno3P",
+    desc: "Đoán số để dành chiến thắng",
+    img: "https://i.imgur.com/i565sKs.png",
+    link: "/games/keno3p",
+  },
+  {
+    title: "Keno5P",
+    desc: "Đoán số để dành chiến thắng",
+    img: "https://i.imgur.com/LaX6FbR.png",
+    link: "/games/keno5p",
+  },
+  {
+    title: "Xúc Xắc 3P",
+    desc: "Đoán xúc xắc để dành chiến thắng",
+    img: "https://i.imgur.com/zzVnhLi.png",
+    link: "/games/xucxac3p",
+  },
+];
 const Home = () => {
   const GameItem = styled(Box)(({ theme }) => ({
     marginTop: "10px",
@@ -32,6 +58,7 @@ const Home = () => {
       maxWidth: "100px",
     },
   }));
+
   return (
     <>
       <Layout>
@@ -41,33 +68,17 @@ const Home = () => {
           }}
         >
           <h2 className="title">Games</h2>
-          <Link href="/games/keno1p">
-            <GameItem>
-              <Box className="desc">
-                <Typography className="title-game">Keno1p</Typography>
-                <Typography className="desc-game">Đoán số để dành chiến thắng</Typography>
-              </Box>
-              <img src="https://i.imgur.com/x6zOE0C.png" />
-            </GameItem>
-          </Link>
-          <Link href="/games/keno3p">
-            <GameItem>
-              <Box className="desc">
-                <Typography className="title-game">Keno3p</Typography>
-                <Typography className="desc-game">Đoán số để dành chiến thắng</Typography>
-              </Box>
-              <img src="https://i.imgur.com/i565sKs.png" />
-            </GameItem>
-          </Link>
-          <Link href="/games/keno5p">
-            <GameItem>
-              <Box className="desc">
-                <Typography className="title-game">Keno5p</Typography>
-                <Typography className="desc-game">Đoán số để dành chiến thắng</Typography>
-              </Box>
-              <img src="https://i.imgur.com/LaX6FbR.png" />
-            </GameItem>
-          </Link>
+          {listGame.map((item, i) => (
+            <Link href={item.link} key={i}>
+              <GameItem>
+                <Box className="desc">
+                  <Typography className="title-game">{item.title}</Typography>
+                  <Typography className="desc-game">{item.desc}</Typography>
+                </Box>
+                <img src={item.img} />
+              </GameItem>
+            </Link>
+          ))}
         </Box>
       </Layout>
     </>

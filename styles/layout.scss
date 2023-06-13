@@ -154,8 +154,11 @@ pre {
     transform: translateY(0);
   }
 
-  to {
+  50% {
     transform: translateY(-87%);
+  }
+  100% {
+    transform: translateY(0);
   }
 }
 .box-quay .box .slot-column .slot-transform.slot-scroll[data-col="0"] {
@@ -335,4 +338,75 @@ table tbody tr:hover {
   color: red;
   background: #fff;
   margin: auto;
+}
+
+.box-quay .box > [class^="xucxac"] {
+  background-color: #333;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: 70%;
+  border-radius: 0.13333rem;
+  height: 100%;
+  position: relative;
+  width: calc(33.33333% - 0.13333rem);
+
+  &::before {
+    bottom: 0;
+    box-shadow: inset 0 -0.13333rem 0.13333rem #0000004d, inset 0 0.13333rem 0.13333rem #0000004d;
+    content: "";
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+  }
+}
+.box-quay .box {
+  & > .xucxac1 {
+    background-image: url(https://i.imgur.com/V8gGWxl.png);
+  }
+  & > .xucxac2 {
+    background-image: url(https://i.imgur.com/iWErQAu.png);
+  }
+  & > .xucxac3 {
+    background-image: url(https://i.imgur.com/sA93fjJ.png);
+  }
+  & > .xucxac4 {
+    background-image: url(https://i.imgur.com/svseXm4.png);
+  }
+  & > .xucxac5 {
+    background-image: url(https://i.imgur.com/tVjGWD2.png);
+  }
+  & > .xucxac6 {
+    background-image: url(https://i.imgur.com/O6c9unY.png);
+  }
+}
+.box-ketqua {
+  & [class^="xucxac"] {
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 2rem;
+    height: 2rem;
+    margin: 0 0.15rem;
+    width: 2rem;
+  }
+  & .xucxac1 {
+    background-image: url(https://i.imgur.com/qQFFd1W.png);
+  }
+  & .xucxac2 {
+    background-image: url(https://i.imgur.com/frYa0yE.png);
+  }
+  & .xucxac3 {
+    background-image: url(https://i.imgur.com/4zZX3sA.png);
+  }
+  & .xucxac4 {
+    background-image: url(https://i.imgur.com/pvzV2Ja.png);
+  }
+  & .xucxac5 {
+    background-image: url(https://i.imgur.com/7mLXAab.png);
+  }
+  & .xucxac6 {
+    background-image: url(https://i.imgur.com/pEgnv5v.png);
+  }
 }
