@@ -7,7 +7,15 @@ import { NumericFormat } from "react-number-format";
 import { useQuery } from "react-query";
 import SocketContext from "../../../../context/socket";
 import { convertDateTime } from "../../../../utils/convertTime";
-
+const convertChiTietCuoc = (chiTietCuoc, loaiCuoc) => {
+  if (chiTietCuoc === "batky" && loaiCuoc === "2SO") {
+    return "2 số bất kỳ";
+  } else if (chiTietCuoc === "batky" && loaiCuoc === "3SO") {
+    return "3 số bất kỳ";
+  } else {
+    return chiTietCuoc;
+  }
+};
 const LichSuCuoc = () => {
   const { data: session, status } = useSession();
   const [listLichSu, setListLichSu] = useState([]);
@@ -146,7 +154,7 @@ const LichSuCuoc = () => {
                               fontSize: "1.2rem",
                             }}
                           >
-                            Bi {item.loaiBi} - {item.loaiCuoc} -{" "}
+                            {convertChiTietCuoc(item.chiTietCuoc, item.loaiCuoc)} -{" "}
                             <NumericFormat
                               value={item.tienCuoc}
                               displayType="text"

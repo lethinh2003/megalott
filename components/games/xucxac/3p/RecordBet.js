@@ -4,6 +4,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 import SocketContext from "../../../../context/socket";
 import BoxInfor from "../BoxInfor";
 import BoxQuay from "../BoxQuay";
+import DatCuoc from "./DatCuoc";
 const RecordBet = () => {
   const { data: session, status } = useSession();
   const [countdownTime, setCountdownTime] = useState(null);
@@ -77,6 +78,7 @@ const RecordBet = () => {
 
         <BoxQuay isRunning={isRunning} ketQuaRandom={ketQuaRandom} phienHoanTatMoiNhat={phienHoanTatMoiNhat}></BoxQuay>
       </Box>
+      <DatCuoc isRunning={isRunning} phien={phien} status={status} />
     </>
   );
 };
