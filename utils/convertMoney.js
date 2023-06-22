@@ -1,7 +1,7 @@
 const convertMoney = (num, digits = 3) => {
   var si = [
     { value: 1, symbol: "" },
-    { value: 1e3, symbol: "K" },
+    { value: 1e3, symbol: "k" },
     { value: 1e6, symbol: "M" },
     { value: 1e9, symbol: "G" },
     { value: 1e12, symbol: "T" },
@@ -18,3 +18,6 @@ const convertMoney = (num, digits = 3) => {
   return (num / si[i].value).toFixed(digits).replace(rx, "$1") + si[i].symbol;
 };
 export default convertMoney;
+export const isNumeric = (value) => {
+  return /^-?\d+$/.test(value);
+};

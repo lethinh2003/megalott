@@ -410,3 +410,34 @@ table tbody tr:hover {
     background-image: url(https://i.imgur.com/pEgnv5v.png);
   }
 }
+
+.ms-sidebar {
+  align-items: center;
+  z-index: 97;
+  width: 90px;
+  position: fixed;
+  flex-direction: column;
+  height: calc(100vh - 0px);
+
+  transform: translateX(0);
+  background-color: rgb(14, 18, 23);
+  border-right: 1px solid rgb(75, 76, 78);
+}
+/* Allows the MUI grid rows to expand to child height */
+.MuiDataGrid-viewport,
+.MuiDataGrid-row,
+.MuiDataGrid-renderingZone {
+  max-height: fit-content !important;
+}
+
+/* Allows the MUI grid rows to expand to child height */
+.MuiDataGrid-cell {
+  max-height: fit-content !important;
+  overflow: auto;
+  white-space: initial !important;
+  line-height: 16px !important;
+  display: flex !important;
+  align-items: center;
+  padding-top: 10px !important;
+  padding-bottom: 10px !important;
+}

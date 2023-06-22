@@ -33,6 +33,7 @@ const Modal = (props) => {
           sx={{
             backgroundColor: "#ff0000",
             fontWeight: "bold",
+            color: (theme) => theme.palette.text.primary,
           }}
         >
           {title}

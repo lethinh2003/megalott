@@ -49,6 +49,18 @@ const GlobalStyle = createGlobalStyle`
 
 const getDesignTokens = (mode) => ({
   components: {
+    MuiPaper: {
+      styleOverrides: {
+        root: ({ theme }) => ({
+          textTransform: "initial",
+          fontFamily: "Noto Sans",
+          color: theme.palette.text.secondary,
+
+          "&:hover": {},
+        }),
+      },
+    },
+
     MuiButton: {
       styleOverrides: {
         root: ({ theme }) => ({

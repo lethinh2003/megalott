@@ -4,8 +4,10 @@ import axios from "axios";
 import { memo, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import convertMoney from "../../../../utils/convertMoney";
+import { InputComponent, inputStyles, rootInputStyles, rootStyles } from "../../../../custom/textfield";
+import convertMoney, { isNumeric } from "../../../../utils/convertMoney";
 import LoadingBox from "../../../homePage/LoadingBox";
+
 const BoxContainer = styled(Box)(({ theme }) => ({
   borderRadius: "20px",
   padding: "20px",
@@ -57,8 +59,8 @@ const DatCuoc = ({ isRunning, phien, status }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isInit, setIsInit] = useState(false);
   const [tienCuoc, setTienCuoc] = useState(0);
-  const [loaiCuocSelected, setLoaiCuocSelected] = useState("");
-  const [loaiCuoc, setLoaiCuoc] = useState("");
+
+  const [chiTietCuocCu, setChiTietCuocCu] = useState([]);
   const [chiTietCuoc, setChiTietCuoc] = useState([]);
   useEffect(() => {
     if (status === "authenticated" && phien !== 0 && !isInit) {
@@ -80,6 +82,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
       if (results.data) {
         toast.success(results.data.message);
         setIsInit(true);
+        setChiTietCuocCu(results.data.data.datCuoc);
         setChiTietCuoc(results.data.data.datCuoc);
       }
       setIsLoading(false);
@@ -97,13 +100,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
         toast.error("Vui lòng chọn cược");
         return;
       }
-      const tongTienCuoc = chiTietCuoc.reduce((a, b) => a + b.tienCuoc, 0);
-      console.log(tongTienCuoc);
 
-      if (balance < tongTienCuoc) {
-        toast.error("Không đủ tiền cược");
-        return;
-      }
       setIsLoading(true);
 
       const results = await axios.post(`${process.env.ENDPOINT_SERVER}/api/v1/games/xucxac3p/dat-cuoc`, {
@@ -113,6 +110,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
       if (results.data) {
         toast.success(results.data.message);
         setTienCuoc(0);
+        setChiTietCuocCu(chiTietCuoc);
       }
       setIsLoading(false);
     } catch (err) {
@@ -147,75 +145,74 @@ const DatCuoc = ({ isRunning, phien, status }) => {
   ];
   const cuoc2So = [
     {
-      loaiCuoc: 11,
+      loaiCuoc: "11",
       base: "2SO",
     },
     {
-      loaiCuoc: 22,
+      loaiCuoc: "22",
       base: "2SO",
     },
     {
-      loaiCuoc: 33,
+      loaiCuoc: "33",
       base: "2SO",
     },
     {
-      loaiCuoc: 44,
+      loaiCuoc: "44",
       base: "2SO",
     },
     {
-      loaiCuoc: 55,
+      loaiCuoc: "55",
       base: "2SO",
     },
     {
-      loaiCuoc: 66,
+      loaiCuoc: "66",
       base: "2SO",
     },
   ];
   const cuoc3So = [
     {
-      loaiCuoc: 111,
+      loaiCuoc: "111",
       base: "3SO",
     },
     {
-      loaiCuoc: 222,
+      loaiCuoc: "222",
       base: "3SO",
     },
     {
-      loaiCuoc: 333,
+      loaiCuoc: "333",
       base: "3SO",
     },
     {
-      loaiCuoc: 444,
+      loaiCuoc: "444",
       base: "3SO",
     },
     {
-      loaiCuoc: 555,
+      loaiCuoc: "555",
       base: "3SO",
     },
     {
-      loaiCuoc: 666,
+      loaiCuoc: "666",
       base: "3SO",
     },
   ];
   const mucTienCuoc = [10000, 50000, 100000, 500000, 1000000];
-  useEffect(() => {
-    console.log(chiTietCuoc);
-  }, [chiTietCuoc]);
+
   const handleClickCuocCLTX = (item) => {
-    if (!tienCuoc) {
-      toast.error("Vui lòng chọn tiền cược");
+    if (!tienCuoc || tienCuoc <= 0 || !isNumeric(tienCuoc)) {
+      toast.error("Vui lòng chọn tiền cược hợp lệ");
       return;
     }
+
     const findItemCuoc = chiTietCuoc.find((e) => e.chiTietCuoc === item.loaiCuoc && e.loaiCuoc === item.base);
     if (!findItemCuoc) {
       const chiTietCuoc = {
         loaiCuoc: item.base,
         chiTietCuoc: item.loaiCuoc,
-        tienCuoc: tienCuoc,
+        tienCuoc: parseInt(tienCuoc),
       };
       setChiTietCuoc((state) => [...state, chiTietCuoc]);
     } else {
-      const newTienCuoc = findItemCuoc.tienCuoc + tienCuoc;
+      const newTienCuoc = findItemCuoc.tienCuoc + parseInt(tienCuoc);
       setChiTietCuoc((prevState) => {
         const newState = prevState.map((obj) => {
           if (obj.chiTietCuoc === item.loaiCuoc && obj.loaiCuoc === item.base) {
@@ -235,6 +232,10 @@ const DatCuoc = ({ isRunning, phien, status }) => {
     } else {
       return 0;
     }
+  };
+  const handleClickResetCuoc = () => {
+    setChiTietCuoc(chiTietCuocCu);
+    setTienCuoc(0);
   };
   return (
     <>
@@ -321,6 +322,13 @@ const DatCuoc = ({ isRunning, phien, status }) => {
             </ItemCuoc>
           ))}
         </Box>
+        <Typography
+          sx={{
+            fontWeight: "bold",
+          }}
+        >
+          Chọn tiền cược sẵn có
+        </Typography>
         <Box
           sx={{
             display: "flex",
@@ -331,14 +339,45 @@ const DatCuoc = ({ isRunning, phien, status }) => {
           {mucTienCuoc.map((item, i) => (
             <ItemCuoc
               key={item}
-              className={tienCuoc === item ? "active-tien_cuoc" : ""}
+              className={tienCuoc == item ? "active-tien_cuoc" : ""}
               onClick={() => setTienCuoc(item)}
             >
               <Typography className="loai_cuoc">{convertMoney(item)}</Typography>
             </ItemCuoc>
           ))}
         </Box>
+        <Typography
+          sx={{
+            fontWeight: "bold",
+          }}
+        >
+          Hoặc nhập số tiền bất kỳ ở dưới
+        </Typography>
 
+        <InputComponent
+          defaultValue={0}
+          value={tienCuoc}
+          onChange={(e) => setTienCuoc(e.target.value)}
+          placeholder="Số tiền"
+          size="small"
+          type="number"
+          fullWidth
+          sx={{
+            ...rootStyles,
+          }}
+          InputProps={{
+            sx: {
+              ...rootInputStyles,
+            },
+          }}
+          inputProps={{
+            sx: {
+              ...inputStyles,
+            },
+          }}
+        />
+
+        <Button onClick={handleClickResetCuoc}>Đặt lại</Button>
         <Button disabled={isRunning} onClick={handleSubmitCuoc}>
           {isRunning ? "Chờ phiên mới" : "Xác nhận"}
         </Button>

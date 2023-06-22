@@ -75,7 +75,7 @@ const RecordBet = () => {
         <BoxInfor phien={phien} countdownTime={countdownTime} isModal={isModal} setIsModal={setIsModal} />
         <BoxQuay isRunning={isRunning} ketQuaRandom={ketQuaRandom} phienHoanTatMoiNhat={phienHoanTatMoiNhat}></BoxQuay>
       </Box>
-      <DatCuoc isRunning={isRunning} phien={phien} />
+      <DatCuoc isRunning={isRunning} phien={phien} status={status} />
     </>
   );
 };

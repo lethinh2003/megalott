@@ -78,7 +78,7 @@ const RecordBet = () => {
 
         <BoxQuay isRunning={isRunning} ketQuaRandom={ketQuaRandom} phienHoanTatMoiNhat={phienHoanTatMoiNhat}></BoxQuay>
       </Box>
-      <DatCuoc isRunning={isRunning} phien={phien} />
+      <DatCuoc isRunning={isRunning} phien={phien} status={status} />
     </>
   );
 };

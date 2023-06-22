@@ -5,7 +5,7 @@ import { InputComponent, inputStyles, rootInputStyles, rootStyles } from "../../
 const MoneyInput = ({ tienCuoc, setTienCuoc }) => {
   return (
     <>
-      <Typography>Chọn tiền cược</Typography>
+      <Typography>Hoặc nhập số tiền bất kỳ ở dưới</Typography>
       <InputComponent
         defaultValue={0}
         value={tienCuoc}
