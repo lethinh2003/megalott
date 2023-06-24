@@ -1,5 +1,5 @@
 import InfoIcon from "@mui/icons-material/Info";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, Breadcrumbs, CircularProgress } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import Head from "next/head";
@@ -93,7 +93,7 @@ const Keno1P = () => {
       type: "actions",
       width: 150,
       getActions: (params) => [
-        <Link href={`/admin/keno1p/${params.id}`} label="Info">
+        <Link href={`/admin/games/keno1p/${params.id}`} label="Info">
           <InfoIcon />
         </Link>,
       ],
@@ -105,6 +105,18 @@ const Keno1P = () => {
       <Head>
         <title>Game Keno 1P - Trang quản trị Admin</title>
       </Head>
+
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/admin">
+          Admin
+        </Link>
+        <Link underline="hover" color="inherit" href="/admin/games">
+          Games
+        </Link>
+        <Link underline="hover" color="inherit" href="/admin/games/keno1p">
+          Keno1P
+        </Link>
+      </Breadcrumbs>
       <h1 className="title">Keno 1P</h1>
 
       <Box

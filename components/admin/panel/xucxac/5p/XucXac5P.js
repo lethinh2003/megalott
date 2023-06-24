@@ -1,5 +1,5 @@
 import InfoIcon from "@mui/icons-material/Info";
-import { Box, CircularProgress } from "@mui/material";
+import { Box, Breadcrumbs, CircularProgress } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import axios from "axios";
 import Head from "next/head";
@@ -7,27 +7,27 @@ import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
-import SocketContext from "../../../context/socket";
-import { convertDateTime } from "../../../utils/convertTime";
+import SocketContext from "../../../../../context/socket";
+import { convertDateTime } from "../../../../../utils/convertTime";
 
-const XucXac3P = () => {
+const XucXac5P = () => {
   const socket = useContext(SocketContext);
 
   const [data, setData] = useState([]);
 
   const callDataApi = async () => {
-    const results = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/admin/games/xucxac3p`);
+    const results = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/admin/games/xucxac5p`);
 
     return results.data;
   };
-  const getListQuery = useQuery("get-admin-lich-su-game-xuc-xac-3p", callDataApi, {
+  const getListQuery = useQuery("get-admin-lich-su-game-xuc-xac-5p", callDataApi, {
     cacheTime: Infinity,
     refetchOnWindowFocus: false,
   });
   const { data: dataQuery, isLoading, isFetching, isError: isErrorQuery, error, refetch } = getListQuery;
   useEffect(() => {
     if (socket) {
-      socket.emit("join-room-admin-xucxac3p");
+      socket.emit("join-room-admin-xucxac5p");
       socket.off("refetchDataGame").on("refetchDataGame", () => {
         refetch();
       });
@@ -93,7 +93,7 @@ const XucXac3P = () => {
       type: "actions",
       width: 150,
       getActions: (params) => [
-        <Link href={`/admin/xuc-xac/${params.id}`} label="Info">
+        <Link href={`/admin/games/xucxac5p/${params.id}`} label="Info">
           <InfoIcon />
         </Link>,
       ],
@@ -103,9 +103,20 @@ const XucXac3P = () => {
   return (
     <>
       <Head>
-        <title>Game Xúc Xắc 3P - Trang quản trị Admin</title>
+        <title>Game Xúc Xắc 5P - Trang quản trị Admin</title>
       </Head>
-      <h1 className="title">Xúc Xắc 3P</h1>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/admin">
+          Admin
+        </Link>
+        <Link underline="hover" color="inherit" href="/admin/games">
+          Games
+        </Link>
+        <Link underline="hover" color="inherit" href="/admin/games/xucxac5p">
+          Xúc Xắc 5P
+        </Link>
+      </Breadcrumbs>
+      <h1 className="title">Xúc Xắc 5P</h1>
 
       <Box
         sx={{
@@ -162,4 +173,4 @@ const XucXac3P = () => {
     </>
   );
 };
-export default XucXac3P;
+export default XucXac5P;

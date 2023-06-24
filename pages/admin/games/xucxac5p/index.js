@@ -1,8 +1,8 @@
 import { Box } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import Layout from "../../../components/admin/Layout";
-import XucXac3P from "../../../components/admin/panel/XucXac3P";
+import Layout from "../../../../components/admin/Layout";
+import XucXac5P from "../../../../components/admin/panel/xucxac/5p/XucXac5P";
 
 const XucXac = () => {
   const { data: session, status } = useSession();
@@ -10,7 +10,7 @@ const XucXac = () => {
   return (
     <>
       <Head>
-        <title>Source Code - Trang quản trị Admin</title>
+        <title>Game Xúc Xắc 5P - Trang quản trị Admin</title>
       </Head>
       <Layout>
         {status === "authenticated" && (
@@ -26,7 +26,7 @@ const XucXac = () => {
               padding: { xs: "40px 10px", md: "40px 20px" },
             }}
           >
-            <XucXac3P />
+            <XucXac5P />
           </Box>
         )}
       </Layout>

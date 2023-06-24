@@ -10,29 +10,29 @@ import { toast } from "react-toastify";
 import SocketContext from "../../../../../context/socket";
 import { convertDateTime } from "../../../../../utils/convertTime";
 
-const Keno5P = () => {
+const XucXac3P = () => {
   const socket = useContext(SocketContext);
 
   const [data, setData] = useState([]);
 
   const callDataApi = async () => {
-    const results = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/admin/games/keno5p`);
+    const results = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/admin/games/xucxac3p`);
 
     return results.data;
   };
-  const getListQuery = useQuery("get-admin-lich-su-game-keno-5p", callDataApi, {
+  const getListQuery = useQuery("get-admin-lich-su-game-xuc-xac-3p", callDataApi, {
     cacheTime: Infinity,
     refetchOnWindowFocus: false,
   });
   const { data: dataQuery, isLoading, isFetching, isError: isErrorQuery, error, refetch } = getListQuery;
   useEffect(() => {
     if (socket) {
-      socket.emit("join-room-admin-keno5p");
-      socket.off("refetchDataGameKeno5P").on("refetchDataGameKeno5P", () => {
+      socket.emit("join-room-admin-xucxac3p");
+      socket.off("refetchDataGame").on("refetchDataGame", () => {
         refetch();
       });
       return () => {
-        socket.off("refetchDataGameKeno5P");
+        socket.off("refetchDataGame");
       };
     }
   }, [socket]);
@@ -93,7 +93,7 @@ const Keno5P = () => {
       type: "actions",
       width: 150,
       getActions: (params) => [
-        <Link href={`/admin/games/keno5p/${params.id}`} label="Info">
+        <Link href={`/admin/games/xucxac3p/${params.id}`} label="Info">
           <InfoIcon />
         </Link>,
       ],
@@ -103,7 +103,7 @@ const Keno5P = () => {
   return (
     <>
       <Head>
-        <title>Game Keno 5P - Trang quản trị Admin</title>
+        <title>Game Xúc Xắc 3P - Trang quản trị Admin</title>
       </Head>
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/admin">
@@ -112,11 +112,11 @@ const Keno5P = () => {
         <Link underline="hover" color="inherit" href="/admin/games">
           Games
         </Link>
-        <Link underline="hover" color="inherit" href="/admin/games/keno5p">
-          Keno5P
+        <Link underline="hover" color="inherit" href="/admin/games/xucxac3p">
+          Xúc Xắc 3P
         </Link>
       </Breadcrumbs>
-      <h1 className="title">Keno 5P</h1>
+      <h1 className="title">Xúc Xắc 3P</h1>
 
       <Box
         sx={{
@@ -173,4 +173,4 @@ const Keno5P = () => {
     </>
   );
 };
-export default Keno5P;
+export default XucXac3P;

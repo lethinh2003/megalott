@@ -27,6 +27,12 @@ const listGame = [
     img: "https://i.imgur.com/zzVnhLi.png",
     link: "/games/xucxac3p",
   },
+  {
+    title: "Xúc Xắc 5P",
+    desc: "Đoán xúc xắc để dành chiến thắng",
+    img: "https://i.imgur.com/mPAffoY.png",
+    link: "/games/xucxac5p",
+  },
 ];
 const Home = () => {
   const GameItem = styled(Box)(({ theme }) => ({

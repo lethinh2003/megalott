@@ -1,8 +1,8 @@
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import Layout from "../../../components/Layout";
-import BoxLichSu from "../../../components/games/xucxac/3p/BoxLichSu";
-import RecordBet from "../../../components/games/xucxac/3p/RecordBet";
+import BoxLichSu from "../../../components/games/xucxac/5p/BoxLichSu";
+import RecordBet from "../../../components/games/xucxac/5p/RecordBet";
 const Home = () => {
   const { data: session, status } = useSession();
 

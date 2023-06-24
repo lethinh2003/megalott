@@ -1,14 +1,14 @@
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Button, CircularProgress, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import axios from "axios";
-
 import Head from "next/head";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
-import SocketContext from "../../../../context/socket";
-import { convertDateTime } from "../../../../utils/convertTime";
-import CountdownTimer from "../../../games/xucxac/CountdownTimer";
+import SocketContext from "../../../../../context/socket";
+import { convertDateTime } from "../../../../../utils/convertTime";
+import CountdownTimer from "../../../../games/xucxac/CountdownTimer";
 const data = [
   { name: "Chẵn", value: 400000 },
   { name: "Lẻ", value: 300000 },
@@ -44,11 +44,11 @@ const ChiTietPhien = ({ ID }) => {
   });
 
   const callDataApi = async () => {
-    const results = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/admin/games/xucxac3p/chi-tiet?id=${ID}`);
+    const results = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/admin/games/xucxac5p/chi-tiet?id=${ID}`);
 
     return results.data;
   };
-  const getListQuery = useQuery("get-admin-lich-su-chi-tiet-game-xuc-xac-3p", callDataApi, {
+  const getListQuery = useQuery("get-admin-lich-su-chi-tiet-game-xuc-xac-5p", callDataApi, {
     cacheTime: 0,
     refetchOnWindowFocus: false,
   });
@@ -68,26 +68,26 @@ const ChiTietPhien = ({ ID }) => {
   }, [dataQuery]);
   useEffect(() => {
     if (socket) {
-      socket.emit("join-room-admin-xucxac3p");
+      socket.emit("join-room-admin-xucxac5p");
       socket.off("refetchDataChiTietPhienGame").on("refetchDataChiTietPhienGame", ({ phien }) => {
         if (phien == ID) {
           refetch();
         }
       });
-      socket.off("timerXucXac3P").on("timerXucXac3P", (data) => {
+      socket.off("timerXucXac5P").on("timerXucXac5P", (data) => {
         if (phien === data.phien) {
           setTime(data.current_time);
         }
       });
-      socket.off("ketQuaDieuChinhXucXac3P").on("ketQuaDieuChinhXucXac3P", ({ ketQua, phienHienTai }) => {
+      socket.off("ketQuaDieuChinhXucXac5P").on("ketQuaDieuChinhXucXac5P", ({ ketQua, phienHienTai }) => {
         if (phien === phienHienTai) {
           setKetQua(ketQua);
         }
       });
       return () => {
         socket.off("refetchDataChiTietPhienGame");
-        socket.off("timerXucXac3P");
-        socket.off("ketQuaDieuChinhXucXac3P");
+        socket.off("timerXucXac5P");
+        socket.off("ketQuaDieuChinhXucXac5P");
       };
     }
   }, [socket, phien, tinhTrang]);
@@ -232,7 +232,7 @@ const ChiTietPhien = ({ ID }) => {
       return;
     }
     if (socket) {
-      socket.emit("set-ket-qua-dieu-chinh-xuc-xac-3p", ketQua);
+      socket.emit("set-ket-qua-dieu-chinh-xuc-xac-5p", ketQua);
       toast.success("Điều chỉnh thành công");
       setChonTruocKetQua((prev) => ({ ...prev, isTrigger: false }));
     }
@@ -240,9 +240,21 @@ const ChiTietPhien = ({ ID }) => {
   return (
     <>
       <Head>
-        <title>Game Xúc Xắc 3P - Trang quản trị Admin</title>
+        <title>Game Xúc Xắc 5P - Trang quản trị Admin</title>
       </Head>
-      <h1 className="title">Chi Tiết Phiên Xúc Xắc 3P</h1>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/admin">
+          Admin
+        </Link>
+        <Link underline="hover" color="inherit" href="/admin/games">
+          Games
+        </Link>
+        <Link underline="hover" color="inherit" href="/admin/games/xucxac5p">
+          Xúc Xắc 5P
+        </Link>
+        <Typography>Chi tiết</Typography>
+      </Breadcrumbs>
+      <h1 className="title">Chi Tiết Phiên Xúc Xắc 5P</h1>
 
       <Box
         sx={{

@@ -1,6 +1,7 @@
-import { Box, Button, CircularProgress, Typography } from "@mui/material";
+import { Box, Breadcrumbs, Button, CircularProgress, Typography } from "@mui/material";
 import axios from "axios";
 import Head from "next/head";
+import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
@@ -8,7 +9,6 @@ import SocketContext from "../../../../../context/socket";
 import { convertDateTime } from "../../../../../utils/convertTime";
 import CountdownTimer from "../../../../games/xucxac/CountdownTimer";
 import BoxKetQua from "./BoxKetQua";
-
 const ChiTietPhien = ({ ID }) => {
   const socket = useContext(SocketContext);
   const [time, setTime] = useState(0);
@@ -122,6 +122,18 @@ const ChiTietPhien = ({ ID }) => {
       <Head>
         <title>Game Keno 5P - Trang quản trị Admin</title>
       </Head>
+      <Breadcrumbs aria-label="breadcrumb">
+        <Link underline="hover" color="inherit" href="/admin">
+          Admin
+        </Link>
+        <Link underline="hover" color="inherit" href="/admin/games">
+          Games
+        </Link>
+        <Link underline="hover" color="inherit" href="/admin/games/keno5p">
+          Keno5P
+        </Link>
+        <Typography>Chi tiết</Typography>
+      </Breadcrumbs>
       <h1 className="title">Chi Tiết Phiên Keno 5P</h1>
 
       <Box

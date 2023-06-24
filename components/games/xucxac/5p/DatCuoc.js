@@ -44,9 +44,6 @@ const ItemCuoc = styled(Box)(({ theme }) => ({
   "& .tien_cuoc": {
     fontWeight: 700,
     color: "#fa8838",
-    "&.new": {
-      color: "blue",
-    },
   },
   "&.active-tien_cuoc": {
     backgroundColor: "red",
@@ -77,17 +74,13 @@ const DatCuoc = ({ isRunning, phien, status }) => {
     try {
       setIsLoading(true);
       const results = await axios.get(
-        `${process.env.ENDPOINT_SERVER}/api/v1/games/xucxac3p/lich-su-cuoc-chi-tiet?phien=${phien}`
+        `${process.env.ENDPOINT_SERVER}/api/v1/games/xucxac5p/lich-su-cuoc-chi-tiet?phien=${phien}`
       );
       if (results.data) {
         toast.success(results.data.message);
         setIsInit(true);
-        const chiTietCuocList = results.data.data.datCuoc.map((obj) => {
-          return { ...obj };
-        });
-
-        setChiTietCuocCu(chiTietCuocList);
-        setChiTietCuoc(chiTietCuocList);
+        setChiTietCuocCu(results.data.data.datCuoc);
+        setChiTietCuoc(results.data.data.datCuoc);
       }
       setIsLoading(false);
     } catch (err) {
@@ -107,7 +100,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
 
       setIsLoading(true);
 
-      const results = await axios.post(`${process.env.ENDPOINT_SERVER}/api/v1/games/xucxac3p/dat-cuoc`, {
+      const results = await axios.post(`${process.env.ENDPOINT_SERVER}/api/v1/games/xucxac5p/dat-cuoc`, {
         phien,
         chiTietCuoc,
       });
@@ -224,7 +217,6 @@ const DatCuoc = ({ isRunning, phien, status }) => {
           }
           return obj;
         });
-
         return newState;
       });
     }
@@ -259,7 +251,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
             <ItemCuoc key={item.tenCuoc} onClick={() => handleClickCuocCLTX(item)}>
               <Typography className="loai_cuoc">{item.tenCuoc}</Typography>
               <Typography>x1.98</Typography>
-              <Typography className={"tien_cuoc"}>{convertTienCuocCLTX(item)}</Typography>
+              <Typography className="tien_cuoc">{convertTienCuocCLTX(item)}</Typography>
             </ItemCuoc>
           ))}
         </Box>

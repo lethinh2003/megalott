@@ -6,9 +6,8 @@ import { NumericFormat } from "react-number-format";
 import { useQuery } from "react-query";
 import { toast } from "react-toastify";
 import { Bar, BarChart, CartesianGrid, Legend, Tooltip, XAxis, YAxis } from "recharts";
-import SocketContext from "../../../../context/socket";
-
-import { convertDateTime } from "../../../../utils/convertTime";
+import SocketContext from "../../../../../context/socket";
+import { convertDateTime } from "../../../../../utils/convertTime";
 
 const convertChiTietCuoc = (chiTietCuoc, loaiCuoc) => {
   if (chiTietCuoc === "batky" && loaiCuoc === "2SO") {
@@ -26,18 +25,18 @@ const LichSuCuoc = ({ ID }) => {
   const [dataChart, setDataChart] = useState([]);
 
   const callDataApi = async () => {
-    const results = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/admin/games/xucxac3p/lich-su-cuoc?id=${ID}`);
+    const results = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/admin/games/xucxac5p/lich-su-cuoc?id=${ID}`);
 
     return results.data;
   };
-  const getListQuery = useQuery("get-admin-lich-su-cuoc-chi-tiet-game-xuc-xac-3p", callDataApi, {
+  const getListQuery = useQuery("get-admin-lich-su-cuoc-chi-tiet-game-xuc-xac-5p", callDataApi, {
     cacheTime: 0,
     refetchOnWindowFocus: false,
   });
   const { data: dataQuery, isLoading, isFetching, isError: isErrorQuery, error, refetch } = getListQuery;
   useEffect(() => {
     if (socket) {
-      socket.emit("join-room-admin-xucxac3p");
+      socket.emit("join-room-admin-xucxac5p");
       socket.off("refetchDataLichSuCuocGame").on("refetchDataLichSuCuocGame", ({ phien }) => {
         if (phien == ID) {
           refetch();
