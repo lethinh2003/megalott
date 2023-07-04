@@ -2,6 +2,7 @@ import { Box } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Layout from "../../../../components/admin/Layout";
+import DieuChinhTiLe from "../../../../components/admin/panel/keno/5p/DieuChinhTiLe";
 import Keno5P from "../../../../components/admin/panel/keno/5p/Keno5P";
 const Home = () => {
   const { data: session, status } = useSession();
@@ -26,6 +27,7 @@ const Home = () => {
             }}
           >
             <Keno5P />
+            <DieuChinhTiLe />
           </Box>
         )}
       </Layout>

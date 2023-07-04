@@ -1,8 +1,7 @@
 import { Box } from "@mui/material";
-import { useSession } from "next-auth/react";
+import { getSession, useSession } from "next-auth/react";
 import Head from "next/head";
 import Layout from "../../components/admin/Layout";
-import Overview from "../../components/admin/panel/Overview";
 
 const Admin = () => {
   const { data: session, status } = useSession();
@@ -24,15 +23,23 @@ const Admin = () => {
             gap: "10px",
             padding: { xs: "40px 10px", md: "40px 20px" },
           }}
-        >
-          {status === "authenticated" && (
-            <>
-              <Overview status={status} />
-            </>
-          )}
-        </Box>
+        ></Box>
       </Layout>
     </>
   );
 };
 export default Admin;
+export const getServerSideProps = async (context) => {
+  const { req, res } = context;
+  const session = await getSession({ req });
+
+  if (session && session.user) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: "/admin/settings",
+      },
+      props: {},
+    };
+  }
+};

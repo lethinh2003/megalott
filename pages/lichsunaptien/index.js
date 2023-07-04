@@ -1,8 +1,7 @@
 import { Box, Button } from "@mui/material";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useInfiniteQuery } from "react-query";
 import Layout from "../../components/Layout";
 import LoadingBox from "../../components/homePage/LoadingBox";
@@ -10,11 +9,12 @@ import DanhSachLichSu from "../../components/lichSuNapTien/DanhSachLichSu";
 const Home = () => {
   const { data: session, status } = useSession();
   const [itemsPerPage, setItemsPerPage] = useState(process.env.LIMIT_RESULTS * 1 || 10);
-  const router = useRouter();
-  if (status === "unauthenticated") {
-    router.push("/dangnhap");
-    return null;
-  }
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      window.location.href = "/";
+    }
+  }, [status]);
+
   const callDataApi = async (status, pageParam) => {
     if (status === "unauthenciated") {
       return undefined;

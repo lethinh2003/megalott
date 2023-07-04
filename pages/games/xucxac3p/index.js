@@ -1,16 +1,15 @@
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useEffect } from "react";
 import Layout from "../../../components/Layout";
 import BoxLichSu from "../../../components/games/xucxac/3p/BoxLichSu";
 import RecordBet from "../../../components/games/xucxac/3p/RecordBet";
 const Home = () => {
   const { data: session, status } = useSession();
-
-  const router = useRouter();
-  if (status === "unauthenticated") {
-    router.push("/dangnhap");
-    return null;
-  }
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      window.location.href = "/";
+    }
+  }, [status]);
 
   return (
     <>

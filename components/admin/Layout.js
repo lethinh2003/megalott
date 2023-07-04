@@ -37,7 +37,7 @@ const Layout = (props) => {
 
       <Box
         sx={{
-          bgcolor: "background.default",
+          bgcolor: "#f8fafb",
           color: "#000000",
           paddingLeft: {
             xs: "0px",

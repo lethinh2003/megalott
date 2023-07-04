@@ -2,11 +2,36 @@ import { Box, Breadcrumbs, Card, Typography } from "@mui/material";
 
 import Link from "next/link";
 const listGame = [
-  { title: "Keno 1P", link: "/admin/games/keno1p", icon: "https://i.imgur.com/G8qXjaI.png" },
-  { title: "Keno 3P", link: "/admin/games/keno3p", icon: "https://i.imgur.com/G8qXjaI.png" },
-  { title: "Keno 5P", link: "/admin/games/keno5p", icon: "https://i.imgur.com/G8qXjaI.png" },
-  { title: "Xúc Xắc 3P", link: "/admin/games/xucxac3p", icon: "https://i.imgur.com/Hd9zWRS.png" },
-  { title: "Xúc Xắc 5P", link: "/admin/games/xucxac5p", icon: "https://i.imgur.com/Hd9zWRS.png" },
+  {
+    title: "Keno 1P",
+    link: "/admin/games/keno1p",
+    icon: "https://i.imgur.com/G8qXjaI.png",
+    introduce: "Xem và chỉnh sửa kết quả quay số",
+  },
+  {
+    title: "Keno 3P",
+    link: "/admin/games/keno3p",
+    icon: "https://i.imgur.com/G8qXjaI.png",
+    introduce: "Xem và chỉnh sửa kết quả quay số",
+  },
+  {
+    title: "Keno 5P",
+    link: "/admin/games/keno5p",
+    icon: "https://i.imgur.com/G8qXjaI.png",
+    introduce: "Xem và chỉnh sửa kết quả quay số",
+  },
+  {
+    title: "Xúc Xắc 3P",
+    link: "/admin/games/xucxac3p",
+    icon: "https://i.imgur.com/Hd9zWRS.png",
+    introduce: "Xem và chỉnh sửa kết quả xúc xắc",
+  },
+  {
+    title: "Xúc Xắc 5P",
+    link: "/admin/games/xucxac5p",
+    icon: "https://i.imgur.com/Hd9zWRS.png",
+    introduce: "Xem và chỉnh sửa kết quả xúc xắc",
+  },
 ];
 
 const Overview = () => {
@@ -20,9 +45,14 @@ const Overview = () => {
           Games
         </Link>
       </Breadcrumbs>
-      <Typography component="h1" className="title">
+      <h1
+        className="title"
+        style={{
+          fontSize: "2.5rem",
+        }}
+      >
         Danh sách các game
-      </Typography>
+      </h1>
       <Box
         sx={{
           display: "grid",
@@ -41,51 +71,55 @@ const Overview = () => {
             <Card
               sx={{
                 cursor: "pointer",
-                backgroundColor: "rgb(141 136 136)",
-                color: "#ffffff",
+                backgroundColor: "#ffffff",
+                color: "#201c58",
                 height: "220px",
-                borderRadius: "10px",
+
                 display: "flex",
-                flexDirection: "column",
-                padding: "10px",
-                alignItems: "center",
-                justifyContent: "center",
+
+                padding: "20px",
+
                 minWidth: "200px",
+                maxWidth: "200px",
+                boxShadow: "-1px 2px 14px 5px #edf0f8",
+                borderRadius: "30px",
               }}
             >
-              <Typography
-                component="div"
+              <Box
                 sx={{
                   display: "flex",
-                  justifyContent: "center",
-                  alignItems: "center",
+
+                  width: "100%",
                   flexDirection: "column",
                 }}
               >
                 <Box
-                  component="div"
                   sx={{
-                    width: "60px",
-                    height: "60px",
-                    color: "#ffffff",
-                    padding: "5px",
-                    borderRadius: "50%",
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
+                    width: "40px",
+                    height: "40px",
                   }}
                 >
-                  <img src={item.icon} />
+                  <img src={item.icon} style={{ width: "100%" }} />
                 </Box>
+
                 <Typography
                   component="span"
                   sx={{
                     fontWeight: "bold",
+                    fontSize: "2rem",
                   }}
                 >
                   {item.title}
                 </Typography>
-              </Typography>
+                <Typography
+                  component="span"
+                  sx={{
+                    fontSize: "1.5rem",
+                  }}
+                >
+                  {item.introduce}
+                </Typography>
+              </Box>
             </Card>
           </Link>
         ))}

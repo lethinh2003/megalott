@@ -235,18 +235,19 @@ const LichSuCuoc = ({ ID }) => {
           },
         }}
       >
+        <h1
+          className="title"
+          style={{
+            justifyContent: "center",
+            fontSize: "2.5rem",
+          }}
+        >
+          Tổng tiền cược
+        </h1>
         {isLoading && <CircularProgress color="inherit" />}
 
         {!isLoading && (
           <>
-            <h1
-              className="title"
-              style={{
-                justifyContent: "center",
-              }}
-            >
-              Tổng tiền cược
-            </h1>
             <BarChart
               style={{
                 fontSize: "1.5rem",
@@ -277,6 +278,7 @@ const LichSuCuoc = ({ ID }) => {
               className="title"
               style={{
                 justifyContent: "center",
+                fontSize: "2.5rem",
               }}
             >
               Lịch sử cược

@@ -79,6 +79,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
   const [isInit, setIsInit] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [tienCuoc, setTienCuoc] = useState(0);
+  const [tiLe, setTiLe] = useState(0);
   const [chiTietCuocCu, setChiTietCuocCu] = useState([]);
   const [chiTietCuoc, setChiTietCuoc] = useState([]);
 
@@ -99,12 +100,17 @@ const DatCuoc = ({ isRunning, phien, status }) => {
       const results = await axios.get(
         `${process.env.ENDPOINT_SERVER}/api/v1/games/keno1p/lich-su-cuoc-chi-tiet?phien=${phien}`
       );
+      const getTile = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/games/keno1p/ti-le`);
+      if (getTile.data) {
+        setTiLe(getTile.data.data.gameConfigs.kenoConfigs.tiLe1P);
+      }
       if (results.data) {
         toast.success(results.data.message);
         setIsInit(true);
         setChiTietCuocCu(results.data.data.datCuoc);
         setChiTietCuoc(results.data.data.datCuoc);
       }
+
       setIsLoading(false);
     } catch (err) {
       setIsLoading(false);
@@ -152,7 +158,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
         loaiBi: loaiBi,
         tienCuoc: parseInt(tienCuoc),
       };
-      console.log(chiTietCuoc);
+
       setChiTietCuoc((state) => [...state, chiTietCuoc]);
     } else {
       const newTienCuoc = findItemCuoc.tienCuoc + parseInt(tienCuoc);
@@ -205,7 +211,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
               {loaiCuoc.map((itemLoaiCuoc) => (
                 <ItemCuoc key={itemLoaiCuoc.tenCuoc} onClick={() => handleClickCuocCLTX(itemLoaiCuoc, item)}>
                   <Typography className="loai_cuoc">{itemLoaiCuoc.tenCuoc}</Typography>
-                  <Typography>x1.98</Typography>
+                  <Typography>x{tiLe}</Typography>
                   <Typography className="tien_cuoc">{convertTienCuocCLTX(itemLoaiCuoc, item)}</Typography>
                 </ItemCuoc>
               ))}

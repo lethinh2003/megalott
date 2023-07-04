@@ -56,7 +56,13 @@ const DatCuoc = ({ isRunning, phien, status }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [isInit, setIsInit] = useState(false);
   const [tienCuoc, setTienCuoc] = useState(0);
-
+  const [tiLe, setTiLe] = useState({
+    tiLeCLTX: 0,
+    tiLe2SoBatKy: 0,
+    tiLe2So: 0,
+    tiLe3SoBatKy: 0,
+    tiLe3So: 0,
+  });
   const [chiTietCuocCu, setChiTietCuocCu] = useState([]);
   const [chiTietCuoc, setChiTietCuoc] = useState([]);
   useEffect(() => {
@@ -76,6 +82,16 @@ const DatCuoc = ({ isRunning, phien, status }) => {
       const results = await axios.get(
         `${process.env.ENDPOINT_SERVER}/api/v1/games/xucxac5p/lich-su-cuoc-chi-tiet?phien=${phien}`
       );
+      const getTile = await axios.get(`${process.env.ENDPOINT_SERVER}/api/v1/games/xucxac5p/ti-le`);
+      if (getTile.data) {
+        setTiLe({
+          tiLeCLTX: getTile.data.data.gameConfigs.xucXacConfigs.xucXac5P.tiLeCLTX,
+          tiLe2SoBatKy: getTile.data.data.gameConfigs.xucXacConfigs.xucXac5P.tiLe2SoBatKy,
+          tiLe2So: getTile.data.data.gameConfigs.xucXacConfigs.xucXac5P.tiLe2So,
+          tiLe3SoBatKy: getTile.data.data.gameConfigs.xucXacConfigs.xucXac5P.tiLe3SoBatKy,
+          tiLe3So: getTile.data.data.gameConfigs.xucXacConfigs.xucXac5P.tiLe3So,
+        });
+      }
       if (results.data) {
         toast.success(results.data.message);
         setIsInit(true);
@@ -250,8 +266,8 @@ const DatCuoc = ({ isRunning, phien, status }) => {
           {cuocTruyenThong.map((item, i) => (
             <ItemCuoc key={item.tenCuoc} onClick={() => handleClickCuocCLTX(item)}>
               <Typography className="loai_cuoc">{item.tenCuoc}</Typography>
-              <Typography>x1.98</Typography>
-              <Typography className="tien_cuoc">{convertTienCuocCLTX(item)}</Typography>
+              <Typography>x{tiLe.tiLeCLTX}</Typography>
+              <Typography className={"tien_cuoc"}>{convertTienCuocCLTX(item)}</Typography>
             </ItemCuoc>
           ))}
         </Box>
@@ -264,7 +280,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
           }
         >
           <Typography className="loai_cuoc">2 số trùng bất kỳ</Typography>
-          <Typography>x3</Typography>
+          <Typography>x{tiLe.tiLe2SoBatKy}</Typography>
           <Typography className="tien_cuoc">
             {convertTienCuocCLTX({
               loaiCuoc: "batky",
@@ -282,7 +298,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
           {cuoc2So.map((item, i) => (
             <ItemCuoc key={item.loaiCuoc} onClick={() => handleClickCuocCLTX(item)}>
               <Typography className="loai_cuoc">{item.loaiCuoc}</Typography>
-              <Typography>x4</Typography>
+              <Typography>x{tiLe.tiLe2So}</Typography>
               <Typography className="tien_cuoc">{convertTienCuocCLTX(item)}</Typography>
             </ItemCuoc>
           ))}
@@ -296,7 +312,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
           }
         >
           <Typography className="loai_cuoc">3 số trùng bất kỳ</Typography>
-          <Typography>x6</Typography>
+          <Typography>x{tiLe.tiLe3SoBatKy}</Typography>
           <Typography className="tien_cuoc">
             {convertTienCuocCLTX({
               loaiCuoc: "batky",
@@ -314,7 +330,7 @@ const DatCuoc = ({ isRunning, phien, status }) => {
           {cuoc3So.map((item, i) => (
             <ItemCuoc key={item.loaiCuoc} onClick={() => handleClickCuocCLTX(item)}>
               <Typography className="loai_cuoc">{item.loaiCuoc}</Typography>
-              <Typography>x7</Typography>
+              <Typography>x{tiLe.tiLe3So}</Typography>
               <Typography className="tien_cuoc">{convertTienCuocCLTX(item)}</Typography>
             </ItemCuoc>
           ))}

@@ -1,5 +1,6 @@
 import AdminPanelSettingsIcon from "@mui/icons-material/AdminPanelSettings";
-import DriveFileMoveIcon from "@mui/icons-material/DriveFileMove";
+import PeopleAltIcon from "@mui/icons-material/PeopleAlt";
+import SportsEsportsIcon from "@mui/icons-material/SportsEsports";
 import { Box, Typography } from "@mui/material";
 import { styled, useTheme } from "@mui/material/styles";
 import { useSession } from "next-auth/react";
@@ -7,8 +8,6 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { AiFillHome, AiFillTool } from "react-icons/ai";
-import { HiTemplate } from "react-icons/hi";
-
 const Navbar = (props) => {
   const { data: session, status } = useSession();
   const theme = useTheme();
@@ -55,18 +54,18 @@ const Navbar = (props) => {
       icon: <AdminPanelSettingsIcon />,
     },
     {
-      key: "/admin/xuc-xac",
-      value: "Xúc Xắc",
-      icon: <DriveFileMoveIcon />,
+      key: "/admin/games",
+      value: "Games",
+      icon: <SportsEsportsIcon />,
     },
     {
-      key: "/admin/blog",
-      value: "Blog",
-      icon: <HiTemplate />,
+      key: "/admin/users",
+      value: "Users",
+      icon: <PeopleAltIcon />,
     },
     {
-      key: "/admin/tools",
-      value: "Tools",
+      key: "/admin/settings",
+      value: "Settings",
       icon: <AiFillTool />,
     },
   ];

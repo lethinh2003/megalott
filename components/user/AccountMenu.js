@@ -2,11 +2,16 @@ import AccountBalanceOutlinedIcon from "@mui/icons-material/AccountBalanceOutlin
 import CreditScoreOutlinedIcon from "@mui/icons-material/CreditScoreOutlined";
 import LocalAtmOutlinedIcon from "@mui/icons-material/LocalAtmOutlined";
 import LogoutOutlinedIcon from "@mui/icons-material/LogoutOutlined";
+import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
 import PaymentsOutlinedIcon from "@mui/icons-material/PaymentsOutlined";
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
+
 const AccountMenu = (props) => {
+  const { data: session, status } = useSession();
+
   const AccountMenuItem = styled(Box)(({ theme }) => ({
     cursor: "pointer",
     display: "flex",
@@ -59,6 +64,14 @@ const AccountMenu = (props) => {
           marginTop: "40px",
         }}
       >
+        {session && session.user && session.user.role === "admin" && (
+          <Link href={"/admin"}>
+            <AccountMenuItem>
+              <ManageAccountsIcon />
+              <Typography className="title-menu">Quản lý</Typography>
+            </AccountMenuItem>
+          </Link>
+        )}
         {listMenu.map((item, i) => (
           <Link key={i} href={item.url}>
             <AccountMenuItem>

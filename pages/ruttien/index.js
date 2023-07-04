@@ -1,7 +1,7 @@
 import { Box } from "@mui/material";
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
+import { useEffect } from "react";
 import { useQuery } from "react-query";
 import Layout from "../../components/Layout";
 import LoadingBox from "../../components/homePage/LoadingBox";
@@ -10,11 +10,12 @@ import HuongDan from "../../components/rutTien/HuongDan";
 import ThongTinSoDu from "../../components/rutTien/ThongTinSoDu";
 const Home = () => {
   const { data: session, status } = useSession();
-  const router = useRouter();
-  if (status === "unauthenticated") {
-    router.push("/dangnhap");
-    return null;
-  }
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      window.location.href = "/";
+    }
+  }, [status]);
+
   const callDataApi = async (status) => {
     if (status === "unauthenciated") {
       return undefined;

@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useSession } from "next-auth/react";
-import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { useQuery } from "react-query";
 import { useDispatch } from "react-redux";
@@ -12,11 +11,11 @@ import { setBalance } from "../../redux/actions/balance";
 const CaNhan = () => {
   const dispatch = useDispatch();
   const { data: session, status } = useSession();
-  const router = useRouter();
-  if (status === "unauthenticated") {
-    router.push("/dangnhap");
-    return null;
-  }
+  useEffect(() => {
+    if (status === "unauthenticated") {
+      window.location.href = "/";
+    }
+  }, [status]);
   const callDataApi = async (account) => {
     if (!account) {
       return undefined;

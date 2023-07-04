@@ -41,6 +41,7 @@ export default NextAuth({
         const { taiKhoan, matKhau } = credentials;
         const user = await NguoiDung.findOne({
           taiKhoan,
+          status: true,
         });
         if (!user) {
           throw new Error("Không tìm thấy người dùng");
@@ -76,7 +77,7 @@ export default NextAuth({
               expiresIn: process.env.JWT_REFRESHTOKEN_EXPIRED,
             }
           );
-          const expireAccessToken = Math.round(Date.now() + parseInt(process.env.JWT_ACCESSTOKEN_EXPIRED));
+          const expireAccessToken = Math.round(Date.now() + parseInt(process.env.JWT_ACCESSTOKEN_EXPIRED_NUM) * 1000);
 
           // Update the refreshToken to the database
           await dbConnect();

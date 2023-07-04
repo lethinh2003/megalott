@@ -134,7 +134,14 @@ const ChiTietPhien = ({ ID }) => {
         </Link>
         <Typography>Chi tiết</Typography>
       </Breadcrumbs>
-      <h1 className="title">Chi Tiết Phiên Keno 5P</h1>
+      <h1
+        className="title"
+        style={{
+          fontSize: "2.5rem",
+        }}
+      >
+        Chi Tiết Phiên Keno 5P
+      </h1>
 
       <Box
         sx={{

@@ -21,7 +21,7 @@ const Keno5P = () => {
     return results.data;
   };
   const getListQuery = useQuery("get-admin-lich-su-game-keno-5p", callDataApi, {
-    cacheTime: Infinity,
+    cacheTime: 0,
     refetchOnWindowFocus: false,
   });
   const { data: dataQuery, isLoading, isFetching, isError: isErrorQuery, error, refetch } = getListQuery;
@@ -116,7 +116,14 @@ const Keno5P = () => {
           Keno5P
         </Link>
       </Breadcrumbs>
-      <h1 className="title">Keno 5P</h1>
+      <h1
+        className="title"
+        style={{
+          fontSize: "2.5rem",
+        }}
+      >
+        Keno 5P
+      </h1>
 
       <Box
         sx={{

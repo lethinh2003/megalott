@@ -6,7 +6,8 @@ const HuongDan = ({ isModal, setIsModal }) => {
     <>
       <Modal isModal={isModal} setIsModal={setIsModal} title={"Hướng dẫn cách chơi"}>
         <Typography>
-          Chiến thắng khi đặt cược tổng 3 số xúc xắc (tài/xỉu/lẻ/chẵn). Tỉ lệ ăn 1.98 (đánh 100,000đ ăn 198,000đ).
+          Chiến thắng khi đặt cược tổng 3 số xúc xắc (tài/xỉu/lẻ/chẵn). Ví dụ tỉ lệ ăn là 1.98 (đánh 100,000đ ăn
+          198,000đ).
         </Typography>
         <Typography>Xỉu: kết quả tổng 3 xúc xắc từ 3 đến 10, Tài: từ 11 đến 18</Typography>
         <Typography>Chẵn: kết quả tổng 3 xúc xắc chia hết cho 2, Lẻ: ngược lại</Typography>

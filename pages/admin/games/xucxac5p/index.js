@@ -2,8 +2,8 @@ import { Box } from "@mui/material";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
 import Layout from "../../../../components/admin/Layout";
+import DieuChinhTiLe from "../../../../components/admin/panel/xucxac/5p/DieuChinhTiLe";
 import XucXac5P from "../../../../components/admin/panel/xucxac/5p/XucXac5P";
-
 const XucXac = () => {
   const { data: session, status } = useSession();
 
@@ -27,6 +27,7 @@ const XucXac = () => {
             }}
           >
             <XucXac5P />
+            <DieuChinhTiLe />
           </Box>
         )}
       </Layout>

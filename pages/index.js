@@ -1,7 +1,11 @@
 import { Box, Typography } from "@mui/material";
 import { styled } from "@mui/material/styles";
 import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Layout from "../components/Layout";
+
+// Import Swiper styles
+import "swiper/css";
 const listGame = [
   {
     title: "Keno1P",
@@ -68,11 +72,36 @@ const Home = () => {
   return (
     <>
       <Layout>
-        <Box
-          sx={{
-            paddingTop: "150px",
+        <Swiper
+          spaceBetween={50}
+          slidesPerView={1}
+          style={{
+            maxWidth: "100%",
+            height: "auto",
+            maxHeight: "200px",
+            borderRadius: "10px",
           }}
         >
+          <SwiperSlide>
+            <img
+              src="https://i.imgur.com/ZsJwQ5e.jpg"
+              style={{
+                width: "100%",
+                objectFit: "cover",
+              }}
+            />
+          </SwiperSlide>
+          <SwiperSlide>
+            <img
+              src="https://i.imgur.com/hBQBDcf.jpg"
+              style={{
+                width: "100%",
+                objectFit: "cover",
+              }}
+            />
+          </SwiperSlide>
+        </Swiper>
+        <Box sx={{}}>
           <h2 className="title">Games</h2>
           {listGame.map((item, i) => (
             <Link href={item.link} key={i}>

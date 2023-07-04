@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
                     },
                     {
                       property: "author",
-                      content: "Thinh Le",
+                      content: "",
                     },
                   ]}
                   openGraph={{
@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
                     siteName: "MEGALOTT",
                     images: [
                       {
-                        url: "https://i.imgur.com/tUCRwwB.png",
+                        url: "https://i.imgur.com/WxnxHqx.png",
                         width: 700,
                         height: 700,
                         alt: "MEGALOTT",
@@ -72,7 +72,7 @@ function MyApp({ Component, pageProps: { session, ...pageProps } }) {
                     appId: process.env.FACEBOOK_APPID,
                   }}
                   twitter={{
-                    handle: "Thinh Le",
+                    handle: "",
                     site: process.env.NEXTAUTH_URL,
                     cardType: "summary_large_image",
                   }}

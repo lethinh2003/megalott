@@ -1,4 +1,4 @@
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import { useContext, useEffect } from "react";
 import { NumericFormat } from "react-number-format";
 import { useDispatch, useSelector } from "react-redux";
@@ -12,6 +12,12 @@ const Money = () => {
 
   useEffect(() => {
     if (socket && status === "authenticated") {
+      socket.off("sign-out").on("sign-out", async () => {
+        await signOut({
+          redirect: true,
+          callbackUrl: "/",
+        });
+      });
       socket.emit("get-current-balance", session.user.taiKhoan, (res) => {
         if (res && res.status === "success") {
           dispatch(setBalance(res.data));
@@ -30,6 +36,7 @@ const Money = () => {
       return () => {
         socket.off("set-current-balance");
         socket.off("update-current-balance");
+        socket.off("sign-out");
       };
     }
   }, [socket, status]);

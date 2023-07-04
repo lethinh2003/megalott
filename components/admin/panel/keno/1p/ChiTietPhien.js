@@ -1,6 +1,5 @@
 import { Box, Breadcrumbs, Button, CircularProgress, Typography } from "@mui/material";
 import axios from "axios";
-import Head from "next/head";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
 import { useQuery } from "react-query";
@@ -120,9 +119,6 @@ const ChiTietPhien = ({ ID }) => {
   };
   return (
     <>
-      <Head>
-        <title>Game Xúc Xắc 3P - Trang quản trị Admin</title>
-      </Head>
       <Breadcrumbs aria-label="breadcrumb">
         <Link underline="hover" color="inherit" href="/admin">
           Admin
@@ -135,7 +131,14 @@ const ChiTietPhien = ({ ID }) => {
         </Link>
         <Typography>Chi tiết</Typography>
       </Breadcrumbs>
-      <h1 className="title">Chi Tiết Phiên Keno 1P</h1>
+      <h1
+        className="title"
+        style={{
+          fontSize: "2.5rem",
+        }}
+      >
+        Chi Tiết Phiên Keno 1P
+      </h1>
 
       <Box
         sx={{

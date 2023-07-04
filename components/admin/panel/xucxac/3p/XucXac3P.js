@@ -21,7 +21,7 @@ const XucXac3P = () => {
     return results.data;
   };
   const getListQuery = useQuery("get-admin-lich-su-game-xuc-xac-3p", callDataApi, {
-    cacheTime: Infinity,
+    cacheTime: 0,
     refetchOnWindowFocus: false,
   });
   const { data: dataQuery, isLoading, isFetching, isError: isErrorQuery, error, refetch } = getListQuery;
@@ -116,7 +116,14 @@ const XucXac3P = () => {
           Xúc Xắc 3P
         </Link>
       </Breadcrumbs>
-      <h1 className="title">Xúc Xắc 3P</h1>
+      <h1
+        className="title"
+        style={{
+          fontSize: "2.5rem",
+        }}
+      >
+        Xúc Xắc 3P
+      </h1>
 
       <Box
         sx={{
